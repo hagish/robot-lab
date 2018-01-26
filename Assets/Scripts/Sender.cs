@@ -32,6 +32,7 @@ public class Sender : MonoBehaviour {
 
     void Trigger(Vector3 direction, string command) {
         if (Time.time <= nextTriggerTime) return;
+        if (direction.sqrMagnitude <= 0f) return;
         nextTriggerTime = Time.time + Cooldown;
 
         SigPartSystem.Instance.Spawn(new SigPartSystem.SignalInfo() {

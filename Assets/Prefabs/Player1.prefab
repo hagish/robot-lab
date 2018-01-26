@@ -73,7 +73,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4437174303862576}
   - component: {fileID: 33472580203536190}
-  - component: {fileID: 64501577773515660}
   - component: {fileID: 23219670624871868}
   m_Layer: 0
   m_Name: AimMesh
@@ -218,20 +217,6 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816328270691114}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64501577773515660
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1816328270691114}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &114282666132020934
 MonoBehaviour:

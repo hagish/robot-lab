@@ -5,6 +5,7 @@ using UnityEngine;
 public class AgentExit : MonoBehaviour {
 
 	public int playerExitId;
+    public int scored;
 
 	void OnTriggerEnter(Collider other)
 	{
@@ -12,9 +13,11 @@ public class AgentExit : MonoBehaviour {
 		{
 			Debug.Log ("Agent collision detected");
 			Agent agent = other.gameObject.GetComponent<Agent> ();
-			if (agent.playerGroupId == playerExitId) {
+			// if (agent.playerGroupId == playerExitId) 
+            {
 				Debug.Log ("Destroying agent");
 				Destroy (other.gameObject);
+                scored += 1;
 			}
 		}
 	}

@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class Agent : MonoBehaviour {
 
-	const float commandDuration = 1.0f;
-	const float movementSpeed = 0.05f;
+	public float commandDuration = 1.0f;
+	public float movementSpeed = 0.05f;
 
 	private int currentSignalGroupId;
 	private float timeLastSignal;
 	private Vector3 dir;
 	private Rigidbody rb;
 
-	public int playerGroupId;
+	//public int playerGroupId;
 
 
 	void Awake()
@@ -24,13 +24,18 @@ public class Agent : MonoBehaviour {
 		rb = GetComponent<Rigidbody> ();
 	}
 
+    public bool IsCommandActive() {
+        return Time.time < timeLastSignal + commandDuration;
+    }
+
 	void FixedUpdate ()
 	{
 		float currentTime = Time.time;
+		
+        rb.velocity = Vector3.zero;
 
-		if (currentTime - timeLastSignal < commandDuration) {
+        if (IsCommandActive()) {
             //transform.position += movementSpeed * dir;
-            rb.velocity = Vector3.zero;
 			rb.MovePosition (transform.position + movementSpeed * dir);
 			//Debug.Log ("Moving agent; dir : " + transform.position);
 		}
@@ -38,7 +43,7 @@ public class Agent : MonoBehaviour {
 
 
 	void ChangeDirection(Vector3 newDir)
-	{
+	{        
 		dir = newDir;
 		timeLastSignal = Time.time;
 	}
@@ -46,7 +51,9 @@ public class Agent : MonoBehaviour {
 
 	void ProcessCommand(string command)
 	{
-		switch (command)
+        if (IsCommandActive()) return;
+
+ 		switch (command)
 		{
 		case "Left":
 			//Debug.Log ("Agent moving left");
@@ -78,7 +85,7 @@ public class Agent : MonoBehaviour {
         Signal signal = sigPart.GetComponent<Signal>();
 
         // If signal originates from the wrong player(s), then ignore
-        if (signal.GetPlayerOriginId() != playerGroupId) return;
+        //if (signal.GetPlayerOriginId() != playerGroupId) return;
 
         // If signal came from previously received signal, then also ignore
         if (signal.GetSignalGroupId() == currentSignalGroupId) return;
