@@ -13,6 +13,8 @@ public class Sender : MonoBehaviour {
     public float DeltaAngle = 1f;
     public float ParticleRadius = 0.5f;
 
+    public string Command;
+
 	IEnumerator Start () {
 		while (true) {
             SigPartSystem.Instance.Spawn(new SigPartSystem.SignalInfo(){
@@ -22,7 +24,7 @@ public class Sender : MonoBehaviour {
                 Source = transform.position,
                 Speed = Speed,
 
-                Command = "Up",                
+                Command = Command,                
             }, DeltaAngle, ParticleRadius);
             yield return new WaitForSeconds(Timeout);
         }	

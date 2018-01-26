@@ -24,12 +24,6 @@ public class Agent : MonoBehaviour {
 		rb = GetComponent<Rigidbody> ();
 	}
 
-
-	void Start ()
-	{
-	}
-
-
 	void Update ()
 	{
 		float currentTime = Time.time;
