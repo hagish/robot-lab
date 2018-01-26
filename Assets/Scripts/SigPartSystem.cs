@@ -82,5 +82,8 @@ public class SigPartSystem : MonoBehaviour {
             Signal = info,
             Radius = radius,
         });
+
+        var signal = go.GetComponent<Signal>();
+        signal.SetCommand(info);
     }
 }

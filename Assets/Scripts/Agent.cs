@@ -33,7 +33,7 @@ public class Agent : MonoBehaviour {
 		float currentTime = Time.time;
 
 		if (currentTime - timeLastSignal < commandDuration) {
-			transform.parent.transform.position += movementSpeed * dir;
+			transform.position += movementSpeed * dir;
 			Debug.Log ("Moving agent; dir : " + dir);
 		}
 	}
@@ -73,30 +73,15 @@ public class Agent : MonoBehaviour {
 		}
 	}
 
-    internal void Hit(SigPartSystem.SignalParticleInfo info) {
-        Debug.LogError(info);
+    public void Hit(SigPart sigPart) {
+        Signal signal = sigPart.GetComponent<Signal>();
+
+        // If signal originates from the wrong player(s), then ignore
+        if (signal.GetPlayerOriginId() != playerGroupId) return;
+
+        // If signal came from previously received signal, then also ignore
+        if (signal.GetSignalGroupId() == currentSignalGroupId) return;
+
+        ProcessCommand(signal.GetCommand());
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.LogError(collision);
-    }
-
-    void OnTriggerEnter(Collider other)
-	{
-		if (other.gameObject.tag == "signal") {
-
-			Debug.Log("Detected signal particle");
-			Signal signal = other.gameObject.GetComponent<Signal> ();
-
-			// If signal originates from the wrong player(s), then ignore
-			if (signal.GetPlayerOriginId () != playerGroupId) return;
-
-			// If signal came from previously received signal, then also ignore
-			if (signal.GetSignalGroupId() == currentSignalGroupId) return;
-
-			ProcessCommand (signal.GetCommand ());
-		}
-	}
-
 }

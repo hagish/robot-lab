@@ -21,6 +21,8 @@ public class Sender : MonoBehaviour {
                 MainDirection = Direction,
                 Source = transform.position,
                 Speed = Speed,
+
+                Command = "Up",                
             }, DeltaAngle, ParticleRadius);
             yield return new WaitForSeconds(Timeout);
         }	

@@ -25,7 +25,7 @@ public class SigPart : MonoBehaviour {
             foreach (var collider in overlaps) {
                 var agent = collider.GetComponent<Agent>();
                 if (agent != null) {
-                    agent.Hit(info);
+                    agent.Hit(this);
                 }
             }
 			transform.Translate(dirStep);
