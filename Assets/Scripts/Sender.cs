@@ -13,12 +13,13 @@ public class Sender : MonoBehaviour {
     public float DeltaAngle = 1f;
     public float ParticleRadius = 0.5f;
 
-    public List<string> Commands;
+    public float Cooldown;
+    private float nextTriggerTime;
 
     private void OnEnable()
     {
-        GetComponent<AvatarController>().triggerAction = (Vector3 direction, int actionIdx) => {
-            Trigger(direction, Commands[actionIdx]);
+        GetComponent<AvatarController>().triggerAction = (Vector3 direction, string command) => {
+            Trigger(direction, command);
         }; 
     }
 
@@ -30,6 +31,9 @@ public class Sender : MonoBehaviour {
 	}
 
     void Trigger(Vector3 direction, string command) {
+        if (Time.time <= nextTriggerTime) return;
+        nextTriggerTime = Time.time + Cooldown;
+
         SigPartSystem.Instance.Spawn(new SigPartSystem.SignalInfo() {
             AngleInDegree = AngleInDegree,
             Lifetime = Lifetime,

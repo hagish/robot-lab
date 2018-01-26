@@ -6,9 +6,9 @@ public class AgentExit : MonoBehaviour {
 
 	public int playerExitId;
 
-	void OnCollisionEnter(Collision other)
+	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.tag == "Agent")
+        if (other.gameObject.GetComponentInParent<Agent>() != null)
 		{
 			Debug.Log ("Agent collision detected");
 			Agent agent = other.gameObject.GetComponent<Agent> ();

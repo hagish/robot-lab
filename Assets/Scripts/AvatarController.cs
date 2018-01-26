@@ -12,18 +12,20 @@ public class AvatarController : MonoBehaviour
     [Range(0,1)]
     public float inputThreshold = 0.5f;
 
-    public System.Action<Vector3, int> triggerAction;
+    public System.Action<Vector3, string> triggerAction;
 
     private Vector3 lastMoveDirection;
 
-    void Update() 
+    void FixedUpdate() 
     {
         CharacterController controller = GetComponent<CharacterController>();
         moveDirection = Vector3.zero;
 
        // if (controller.isGrounded)
         {
-            moveDirection = new Vector3(Input.GetAxis(playerInfo.controllerId + "Horizontal"), 0, Input.GetAxis(playerInfo.controllerId + "Vertical"));
+            var dx = Input.GetAxisRaw(playerInfo.controllerId + "Horizontal");
+            var dy = Input.GetAxisRaw(playerInfo.controllerId + "Vertical");
+            moveDirection = new Vector3(dx, 0, dy);
             if(moveDirection.magnitude > inputThreshold)
             {
                 lastMoveDirection = moveDirection;
@@ -34,17 +36,17 @@ public class AvatarController : MonoBehaviour
         }
 
         if (triggerAction != null) {
-			if (Input.GetKeyDown(KeyCode.Alpha1)) {
-                triggerAction(lastMoveDirection, 0);
+			if (Input.GetKey(KeyCode.Alpha1)) {
+                triggerAction(lastMoveDirection, "Up");
 			}
-            if (Input.GetKeyDown(KeyCode.Alpha2)) {
-                triggerAction(lastMoveDirection, 1);
+            if (Input.GetKey(KeyCode.Alpha2)) {
+                triggerAction(lastMoveDirection, "Down");
             }
-            if (Input.GetKeyDown(KeyCode.Alpha3)) {
-                triggerAction(lastMoveDirection, 2);
+            if (Input.GetKey(KeyCode.Alpha3)) {
+                triggerAction(lastMoveDirection, "Left");
             }
-            if (Input.GetKeyDown(KeyCode.Alpha4)) {
-                triggerAction(lastMoveDirection, 3);
+            if (Input.GetKey(KeyCode.Alpha4)) {
+                triggerAction(lastMoveDirection, "Right");
             }
     	}
             

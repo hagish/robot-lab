@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114911673067095802}
   - component: {fileID: 114902029140915176}
   - component: {fileID: 143623445443800308}
+  - component: {fileID: 114758165266749076}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -55,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 1252439241362444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.34, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 4916806642172546}
   m_RootOrder: 0
@@ -115,6 +116,25 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1252439241362444}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114758165266749076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1198771843333814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e55bcd8b75094b8cb849d2e4c85144f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Timeout: 3
+  Lifetime: 6
+  Direction: {x: 0, y: 0, z: -1}
+  AngleInDegree: 90
+  Speed: 4
+  DeltaAngle: 10
+  ParticleRadius: 0.05
+  Cooldown: 1
 --- !u!114 &114902029140915176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,9 +147,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInfo: {fileID: 114911673067095802}
-  speed: 15
+  speed: 3
   jumpSpeed: 8
   gravity: 20
+  inputThreshold: 0.5
 --- !u!114 &114911673067095802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,8 +186,8 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 1
+  m_Radius: 0.25
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
