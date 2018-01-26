@@ -12,6 +12,10 @@ public class AvatarController : MonoBehaviour
     [Range(0,1)]
     public float inputThreshold = 0.5f;
 
+    public System.Action<Vector3, int> triggerAction;
+
+    private Vector3 lastMoveDirection;
+
     void Update() 
     {
         CharacterController controller = GetComponent<CharacterController>();
@@ -22,12 +26,27 @@ public class AvatarController : MonoBehaviour
             moveDirection = new Vector3(Input.GetAxis(playerInfo.controllerId + "Horizontal"), 0, Input.GetAxis(playerInfo.controllerId + "Vertical"));
             if(moveDirection.magnitude > inputThreshold)
             {
+                lastMoveDirection = moveDirection;
                 moveDirection = transform.TransformDirection(moveDirection);
                 moveDirection *= speed;
                 controller.Move(moveDirection * Time.deltaTime);
             }
-
         }
-        
+
+        if (triggerAction != null) {
+			if (Input.GetKeyDown(KeyCode.Alpha1)) {
+                triggerAction(lastMoveDirection, 0);
+			}
+            if (Input.GetKeyDown(KeyCode.Alpha2)) {
+                triggerAction(lastMoveDirection, 1);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3)) {
+                triggerAction(lastMoveDirection, 2);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4)) {
+                triggerAction(lastMoveDirection, 3);
+            }
+    	}
+            
     }
 }

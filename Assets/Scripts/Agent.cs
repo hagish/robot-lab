@@ -29,7 +29,8 @@ public class Agent : MonoBehaviour {
 		float currentTime = Time.time;
 
 		if (currentTime - timeLastSignal < commandDuration) {
-			//transform.position += movementSpeed * dir;
+            //transform.position += movementSpeed * dir;
+            rb.velocity = Vector3.zero;
 			rb.MovePosition (transform.position + movementSpeed * dir);
 			//Debug.Log ("Moving agent; dir : " + transform.position);
 		}
