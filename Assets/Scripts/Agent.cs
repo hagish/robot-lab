@@ -11,6 +11,7 @@ public class Agent : MonoBehaviour {
 	private int currentSignalGroupId;
 	private float timeLastSignal;
 	private Vector3 dir;
+	private Rigidbody rb;
 
 	public int playerGroupId;
 
@@ -20,6 +21,7 @@ public class Agent : MonoBehaviour {
 		dir = new Vector3 (0.0f, 0.0f, 0.0f);
 		timeLastSignal = -100.0f;
 		currentSignalGroupId = -1;
+		rb = GetComponent<Rigidbody> ();
 	}
 
 
@@ -33,9 +35,17 @@ public class Agent : MonoBehaviour {
 		float currentTime = Time.time;
 
 		if (currentTime - timeLastSignal < commandDuration) {
-			transform.position += movementSpeed * dir;
-			Debug.Log ("Moving agent; dir : " + dir);
+			//transform.position += movementSpeed * dir;
+			rb.MovePosition (transform.position + movementSpeed * dir);
+			Debug.Log ("Moving agent; dir : " + transform.position);
 		}
+	}
+
+
+	void ChangeDirection(Vector3 newDir)
+	{
+		dir = newDir;
+		timeLastSignal = Time.time;
 	}
 
 
@@ -45,26 +55,22 @@ public class Agent : MonoBehaviour {
 		{
 		case "Left":
 			Debug.Log ("Agent moving left");
-			timeLastSignal = Time.time;
-			dir = new Vector3 (-1.0f, 0.0f, 0.0f);
+			ChangeDirection (new Vector3 (-1.0f, 0.0f, 0.0f));
 			break;
 
 		case "Right":
 			Debug.Log ("Agent moving right");
-			timeLastSignal = Time.time;
-			dir = new Vector3 (1.0f, 0.0f, 0.0f);
+			ChangeDirection (new Vector3 (1.0f, 0.0f, 0.0f));
 			break;
 
 		case "Down":
 			Debug.Log ("Agent moving down");
-			timeLastSignal = Time.time;
-			dir = new Vector3 (0.0f, 0.0f, -1.0f);
+			ChangeDirection (new Vector3 (0.0f, 0.0f, -1.0f));
 			break;
 
 		case "Up":
 			Debug.Log ("Agent moving up");
-			timeLastSignal = Time.time;
-			dir = new Vector3 (0.0f, 0.0f, 1.0f);
+			ChangeDirection (new Vector3 (0.0f, 0.0f, 1.0f));
 			break;
 
 		default:
@@ -82,6 +88,7 @@ public class Agent : MonoBehaviour {
         // If signal came from previously received signal, then also ignore
         if (signal.GetSignalGroupId() == currentSignalGroupId) return;
 
+		currentSignalGroupId = signal.GetSignalGroupId ();
         ProcessCommand(signal.GetCommand());
     }
 }
