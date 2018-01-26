@@ -27,6 +27,10 @@ public class SigPart : MonoBehaviour {
                 if (agent != null) {
                     agent.Hit(this);
                 }
+                var wall = collider.GetComponent<Wall>();
+                if (wall != null) {
+                    GameObject.Destroy(gameObject);
+                }
             }
 			transform.Translate(dirStep);
         }
