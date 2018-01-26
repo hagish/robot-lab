@@ -6,6 +6,8 @@ public class Aim : MonoBehaviour {
     public GameObject Root;
 
     public void SetDirection (Vector3 direction) {
-        Root.transform.rotation = Quaternion.LookRotation(direction);
+        if (direction.sqrMagnitude > 0f) {
+			Root.transform.rotation = Quaternion.LookRotation(direction);            
+        }
     }
 }

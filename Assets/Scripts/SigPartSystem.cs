@@ -6,6 +6,14 @@ using UnityEngine;
 public class SigPartSystem : MonoBehaviour {
     public static SigPartSystem Instance;
 
+    [System.Serializable]
+    public class Entry {
+        public string Command;
+        public Material Material;
+    }
+
+    public List<Entry> Entries;
+
     public GameObject Prefab;
 
     private int nextSignalId = 1;
@@ -22,6 +30,7 @@ public class SigPartSystem : MonoBehaviour {
         public float Speed;
         public float Lifetime;
 
+        public Material Material;
         public String Command;
         public int PlayerOriginId;
         public int SignalGroupId;
@@ -53,6 +62,11 @@ public class SigPartSystem : MonoBehaviour {
         nextSignalId += 1;
 
         info.SignalGroupId = id;
+        foreach (var it in Entries) {
+            if (it.Command == info.Command) {
+                info.Material = it.Material;
+            }
+        }
 
         var min = info.MinDirection;
         var max = info.MaxDirection;

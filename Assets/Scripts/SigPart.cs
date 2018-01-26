@@ -7,10 +7,13 @@ public class SigPart : MonoBehaviour {
     private SigPartSystem.SignalParticleInfo info;
     private float spawnTime;
 
+    public Renderer Renderer;
+
     public void Init(SigPartSystem.SignalParticleInfo info) {
         this.info = info;
         transform.position = info.Signal.Source;
         spawnTime = Time.time;
+        Renderer.sharedMaterial = info.Signal.Material;   
     }
 
     void FixedUpdate() {
