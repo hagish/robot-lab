@@ -31,7 +31,7 @@ public class Agent : MonoBehaviour {
 		if (currentTime - timeLastSignal < commandDuration) {
 			//transform.position += movementSpeed * dir;
 			rb.MovePosition (transform.position + movementSpeed * dir);
-			Debug.Log ("Moving agent; dir : " + transform.position);
+			//Debug.Log ("Moving agent; dir : " + transform.position);
 		}
 	}
 
@@ -48,27 +48,27 @@ public class Agent : MonoBehaviour {
 		switch (command)
 		{
 		case "Left":
-			Debug.Log ("Agent moving left");
+			//Debug.Log ("Agent moving left");
 			ChangeDirection (new Vector3 (-1.0f, 0.0f, 0.0f));
 			break;
 
 		case "Right":
-			Debug.Log ("Agent moving right");
+			//Debug.Log ("Agent moving right");
 			ChangeDirection (new Vector3 (1.0f, 0.0f, 0.0f));
 			break;
 
 		case "Down":
-			Debug.Log ("Agent moving down");
+			//Debug.Log ("Agent moving down");
 			ChangeDirection (new Vector3 (0.0f, 0.0f, -1.0f));
 			break;
 
 		case "Up":
-			Debug.Log ("Agent moving up");
+			//Debug.Log ("Agent moving up");
 			ChangeDirection (new Vector3 (0.0f, 0.0f, 1.0f));
 			break;
 
 		default:
-			Debug.Log("Unrecognised command : " + command);
+			//Debug.Log("Unrecognised command : " + command);
 			break;
 		}
 	}
