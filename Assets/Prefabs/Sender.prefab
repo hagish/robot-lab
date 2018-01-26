@@ -124,6 +124,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e55bcd8b75094b8cb849d2e4c85144f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Timeout: 1
+  Lifetime: 2
+  Direction: {x: 0, y: 0, z: -1}
+  AngleInDegree: 45
+  Speed: 1
+  DeltaAngle: 5
+  ParticleRadius: 0.5
 --- !u!136 &136461546492247892
 CapsuleCollider:
   m_ObjectHideFlags: 1

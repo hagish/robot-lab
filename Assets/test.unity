@@ -156,6 +156,10 @@ Prefab:
       propertyPath: m_Name
       value: Agent (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1886617961923638, guid: 31ce9df9c60654eb5bf0cc2ecbbdcf7b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31ce9df9c60654eb5bf0cc2ecbbdcf7b, type: 2}
   m_IsPrefabParent: 0
@@ -200,28 +204,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114607315527949980, guid: cfe09b566018d41daaff44c1d4200af4,
         type: 2}
-      propertyPath: Direction.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607315527949980, guid: cfe09b566018d41daaff44c1d4200af4,
-        type: 2}
-      propertyPath: Direction.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607315527949980, guid: cfe09b566018d41daaff44c1d4200af4,
-        type: 2}
-      propertyPath: AngleInDegree
-      value: 360
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607315527949980, guid: cfe09b566018d41daaff44c1d4200af4,
-        type: 2}
-      propertyPath: DeltaAngle
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114607315527949980, guid: cfe09b566018d41daaff44c1d4200af4,
-        type: 2}
-      propertyPath: Lifetime
-      value: 2
+      propertyPath: ParticleRadius
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cfe09b566018d41daaff44c1d4200af4, type: 2}
@@ -235,7 +219,6 @@ GameObject:
   m_Component:
   - component: {fileID: 356012161}
   - component: {fileID: 356012160}
-  - component: {fileID: 356012159}
   - component: {fileID: 356012158}
   m_Layer: 0
   m_Name: Arena
@@ -278,20 +261,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &356012159
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 356012157}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &356012160
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -363,6 +332,11 @@ Prefab:
     - target: {fileID: 1895281480830038, guid: cfe09b566018d41daaff44c1d4200af4, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114607315527949980, guid: cfe09b566018d41daaff44c1d4200af4,
+        type: 2}
+      propertyPath: ParticleRadius
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cfe09b566018d41daaff44c1d4200af4, type: 2}
@@ -439,6 +413,15 @@ Prefab:
         type: 2}
       propertyPath: Lifetime
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895281480830038, guid: cfe09b566018d41daaff44c1d4200af4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114607315527949980, guid: cfe09b566018d41daaff44c1d4200af4,
+        type: 2}
+      propertyPath: ParticleRadius
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cfe09b566018d41daaff44c1d4200af4, type: 2}
@@ -665,6 +648,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114607315527949980, guid: cfe09b566018d41daaff44c1d4200af4,
+        type: 2}
+      propertyPath: ParticleRadius
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cfe09b566018d41daaff44c1d4200af4, type: 2}
   m_IsPrefabParent: 0
@@ -710,6 +698,10 @@ Prefab:
     - target: {fileID: 1886617961923638, guid: 31ce9df9c60654eb5bf0cc2ecbbdcf7b, type: 2}
       propertyPath: m_Name
       value: Agent (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886617961923638, guid: 31ce9df9c60654eb5bf0cc2ecbbdcf7b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31ce9df9c60654eb5bf0cc2ecbbdcf7b, type: 2}

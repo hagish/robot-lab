@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -72,8 +73,16 @@ public class Agent : MonoBehaviour {
 		}
 	}
 
+    internal void Hit(SigPartSystem.SignalParticleInfo info) {
+        Debug.LogError(info);
+    }
 
-	void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.LogError(collision);
+    }
+
+    void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "signal") {
 

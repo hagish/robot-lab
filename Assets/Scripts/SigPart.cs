@@ -19,7 +19,23 @@ public class SigPart : MonoBehaviour {
         if (Time.time - spawnTime > info.Signal.Lifetime) {
             GameObject.Destroy(gameObject);
         } else {
-            transform.Translate(info.Direction.normalized * info.Signal.Speed * Time.deltaTime);
+            var dirStep = info.Direction.normalized * info.Signal.Speed * Time.deltaTime;
+            RaycastHit hitInfo;
+            var overlaps = Physics.OverlapSphere(transform.position, info.Radius);
+            foreach (var collider in overlaps) {
+                var agent = collider.GetComponent<Agent>();
+                if (agent != null) {
+                    agent.Hit(info);
+                }
+            }
+			transform.Translate(dirStep);
         }
+
+    }
+
+
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawSphere(transform.position, info.Radius);
     }
 }

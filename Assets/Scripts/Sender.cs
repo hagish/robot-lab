@@ -11,6 +11,7 @@ public class Sender : MonoBehaviour {
     public float Speed = 1f;
 
     public float DeltaAngle = 1f;
+    public float ParticleRadius = 0.5f;
 
 	IEnumerator Start () {
 		while (true) {
@@ -20,7 +21,7 @@ public class Sender : MonoBehaviour {
                 MainDirection = Direction,
                 Source = transform.position,
                 Speed = Speed,
-            }, DeltaAngle);
+            }, DeltaAngle, ParticleRadius);
             yield return new WaitForSeconds(Timeout);
         }	
 	}

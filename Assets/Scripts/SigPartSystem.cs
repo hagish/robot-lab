@@ -45,9 +45,10 @@ public class SigPartSystem : MonoBehaviour {
     public class SignalParticleInfo {
         public SignalInfo Signal;
         public Vector3 Direction;
+        public float Radius;
     }
 
-    public void Spawn(SignalInfo info, float deltaAngle) {
+    public void Spawn(SignalInfo info, float deltaAngle, float particleRadius) {
         var id = nextSignalId;
         nextSignalId += 1;
 
@@ -68,17 +69,18 @@ public class SigPartSystem : MonoBehaviour {
                 dir = Vector3.Slerp(info.MainDirection, max, (f - 0.5f) * 2f);
             }
 
-			SpawnParticle(info, dir);                
+			SpawnParticle(info, dir, particleRadius);                
         }
     }
 
-    private void SpawnParticle(SignalInfo info, Vector3 dir) {
+    private void SpawnParticle(SignalInfo info, Vector3 dir, float radius) {
         var go = GameObject.Instantiate(Prefab);
         var sp = go.GetComponent<SigPart>();
 
         sp.Init(new SignalParticleInfo() { 
             Direction = dir,
             Signal = info,
+            Radius = radius,
         });
     }
 }
