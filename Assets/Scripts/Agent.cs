@@ -22,12 +22,6 @@ public class Agent : MonoBehaviour {
 		currentSignalGroupId = -1;
 	}
 
-
-	void Start ()
-	{
-	}
-
-
 	void Update ()
 	{
 		float currentTime = Time.time;
