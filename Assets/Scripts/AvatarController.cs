@@ -9,12 +9,19 @@ public class AvatarController : MonoBehaviour
     public float gravity = 20.0F;
     private Vector3 moveDirection = Vector3.zero;
 
+    public Aim Aim;
+
     [Range(0,1)]
     public float inputThreshold = 0.5f;
 
     public System.Action<Vector3, string> triggerAction;
 
     private Vector3 lastMoveDirection;
+
+    private void Awake()
+    {
+        Aim = GetComponent<Aim>();
+    }
 
     void FixedUpdate() 
     {
@@ -35,18 +42,21 @@ public class AvatarController : MonoBehaviour
             }
         }
 
+        var direction = lastMoveDirection;
+        if (Aim != null) Aim.SetDirection(direction);
+
         if (triggerAction != null) {
 			if (Input.GetKey(KeyCode.Alpha1)) {
-                triggerAction(lastMoveDirection, "Up");
+                triggerAction(direction, "Up");
 			}
             if (Input.GetKey(KeyCode.Alpha2)) {
-                triggerAction(lastMoveDirection, "Down");
+                triggerAction(direction, "Down");
             }
             if (Input.GetKey(KeyCode.Alpha3)) {
-                triggerAction(lastMoveDirection, "Left");
+                triggerAction(direction, "Left");
             }
             if (Input.GetKey(KeyCode.Alpha4)) {
-                triggerAction(lastMoveDirection, "Right");
+                triggerAction(direction, "Right");
             }
     	}
             
