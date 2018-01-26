@@ -8,6 +8,10 @@ public class Signal : MonoBehaviour
 	private int playerOriginId;
 	private int signalGroupId;
 
+    public void SetCommand(SigPartSystem.SignalInfo info){
+        SetCommand(info.Command, info.PlayerOriginId, info.SignalGroupId);
+    }
+
 	public void SetCommand(string _command, int _playerOriginId, int _signalGroupId)
 	{
 		command        = _command;

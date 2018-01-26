@@ -4,13 +4,30 @@ using UnityEngine;
 
 public class Sender : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+    public float Timeout = 1f;
+    public float Lifetime = 1f;
+    public Vector3 Direction;
+    public float AngleInDegree = 180f;
+    public float Speed = 1f;
+
+    public float DeltaAngle = 1f;
+
+	IEnumerator Start () {
+		while (true) {
+            SigPartSystem.Instance.Spawn(new SigPartSystem.SignalInfo(){
+                AngleInDegree = AngleInDegree,
+                Lifetime = Lifetime,
+                MainDirection = Direction,
+                Source = transform.position,
+                Speed = Speed,
+            }, DeltaAngle);
+            yield return new WaitForSeconds(Timeout);
+        }	
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawLine(transform.position, transform.position + Direction);
+    }
 }
