@@ -24,7 +24,7 @@ public class Agent : MonoBehaviour {
 		rb = GetComponent<Rigidbody> ();
 	}
 
-	void Update ()
+	void FixedUpdate ()
 	{
 		float currentTime = Time.time;
 
