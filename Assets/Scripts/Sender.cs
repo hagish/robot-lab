@@ -27,7 +27,7 @@ public class Sender : MonoBehaviour {
                 Command = Command,                
             }, DeltaAngle, ParticleRadius);
             yield return new WaitForSeconds(Timeout);
-        }	
+        }
 	}
 
     private void OnDrawGizmosSelected()
