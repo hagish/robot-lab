@@ -8,8 +8,6 @@ public class Sender : MonoBehaviour {
 
     public float Timeout = 1f;
     public float Lifetime = 1f;
-	public float MinAngleInDegrees = 10.0f;
-	public float MaxAngleInDegrees = 180.0f;
 	public float MaxSpeed = 8.0f;
 	public float MinSpeed = 2.0f;
     public float DeltaAngle = 1f;

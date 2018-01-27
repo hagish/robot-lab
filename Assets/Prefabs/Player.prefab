@@ -178,26 +178,26 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1337351135420160}
-  m_LocalRotation: {x: -0.5000028, y: 0.49999726, z: -0.5000014, w: -0.49999857}
-  m_LocalPosition: {x: -0.02, y: 0.318, z: 1.01}
-  m_LocalScale: {x: 2.053774, y: 0.06530994, z: 1}
+  m_LocalRotation: {x: 0.86602443, y: -0, z: -0, w: 0.5000017}
+  m_LocalPosition: {x: 0, y: 0.698, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4790945083773072}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -270, y: 0, z: 90.00001}
+  m_LocalEulerAnglesHint: {x: 120, y: -0.000015258789, z: -0.000015258789}
 --- !u!4 &4437174303862576
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816328270691114}
-  m_LocalRotation: {x: 0.86602443, y: -0, z: -0, w: 0.5000017}
-  m_LocalPosition: {x: 0, y: 0.698, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.5000028, y: 0.49999726, z: -0.5000014, w: -0.49999857}
+  m_LocalPosition: {x: -0.02, y: 0.318, z: 1.01}
+  m_LocalScale: {x: 2.053774, y: 0.06530994, z: 1}
   m_Children: []
   m_Father: {fileID: 4265250298417986}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 120, y: -0.000015258789, z: -0.000015258789}
+  m_LocalEulerAnglesHint: {x: -270, y: 0, z: 90.00001}
 --- !u!4 &4646600502246570
 Transform:
   m_ObjectHideFlags: 1
@@ -245,7 +245,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1229254395723426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.18, y: 0, z: 0.12}
+  m_LocalPosition: {x: 6, y: 0, z: -0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4646600502246570}
@@ -411,14 +411,14 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1337351135420160}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300010, guid: a902b95430868428d9e9a0681bf57fdd, type: 3}
 --- !u!33 &33472580203536190
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816328270691114}
-  m_Mesh: {fileID: 4300010, guid: a902b95430868428d9e9a0681bf57fdd, type: 3}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &54634350792742288
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -477,10 +477,8 @@ MonoBehaviour:
   PlayerId: 1
   Timeout: 3
   Lifetime: 3
-  MinAngleInDegrees: 10
-  MaxAngleInDegrees: 30
   MaxSpeed: 8
-  MinSpeed: 2
+  MinSpeed: 1
   DeltaAngle: 10
   ParticleRadius: 1
   SpawnDistance: 0.5
@@ -488,6 +486,8 @@ MonoBehaviour:
   EnergyReg: 0.02
   Direction: {x: 0, y: 0, z: -1}
   CooldownScale: 0.25
+  coolDownWindow: 2
+  waitTime: 0.2
   Entries:
   - Command: Up
     Cost: 0.1
@@ -525,6 +525,6 @@ MonoBehaviour:
   ConeRight: {fileID: 1661685371631844}
   lerpSpeed: 0.005
   MinAngleInDegrees: 10
-  MaxAngleInDegrees: 180
+  MaxAngleInDegrees: 90
   InitConeFraction: 0.5
   OpeningSpeed: 1
