@@ -806,8 +806,8 @@ MonoBehaviour:
   EnergyReg: 0.02
   Direction: {x: 0, y: 0, z: -1}
   CooldownScale: 0.25
-  coolDownWindow: 2
-  waitTime: 0.2
+  coolDownWindow: 2.5
+  waitTime: 0.5
   Entries:
   - Command: Up
     Cost: 0.1
@@ -847,7 +847,7 @@ MonoBehaviour:
   MinAngleInDegrees: 10
   MaxAngleInDegrees: 90
   InitConeFraction: 0.5
-  OpeningSpeed: 1
+  OpeningSpeed: 2.5
 --- !u!114 &114697477513333034
 MonoBehaviour:
   m_ObjectHideFlags: 1
