@@ -19,6 +19,8 @@ public class Sender : MonoBehaviour {
     public float Energy;
     public float EnergyReg;
 
+    public float CooldownScale = 1f;
+
 	private float nextTriggerTime;
 
     [System.Serializable]
@@ -59,7 +61,7 @@ public class Sender : MonoBehaviour {
 
         foreach (var it in Entries) {
             if (it.Command == command) {
-                cooldown = it.Cooldown;
+                cooldown = it.Cooldown * CooldownScale;
                 cost = it.Cost;
             }
         }

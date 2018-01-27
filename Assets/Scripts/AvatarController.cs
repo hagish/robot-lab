@@ -98,6 +98,5 @@ public class AvatarController : MonoBehaviour
            
 
       if (Aim != null) Aim.SetDirection(faceDirection);
-
     }
 }
