@@ -18,13 +18,13 @@ public class MySceneManager : MonoBehaviour {
 
     void Update () {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            SceneManager.LoadScene("_menu", LoadSceneMode.Single);
+            SceneManager.LoadScene("Scenes/_menu", LoadSceneMode.Single);
         } else if (Input.GetKeyDown(KeyCode.F1)) {
-            SceneManager.LoadScene("_level0", LoadSceneMode.Single);
+            SceneManager.LoadScene("Scenes/_level0", LoadSceneMode.Single);
         } else if (Input.GetKeyDown(KeyCode.F2)) {
-            SceneManager.LoadScene("_level1", LoadSceneMode.Single);
+            SceneManager.LoadScene("_Scenes/level1", LoadSceneMode.Single);
         } else if (Input.GetKeyDown(KeyCode.F3)) {
-            SceneManager.LoadScene("_level2", LoadSceneMode.Single);
+            SceneManager.LoadScene("_Scenes/level2", LoadSceneMode.Single);
         }
     }
 }
