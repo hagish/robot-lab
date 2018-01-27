@@ -20,9 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4641903307832636}
   - component: {fileID: 33642571313558120}
-  - component: {fileID: 136361461564428580}
   - component: {fileID: 23225425884790068}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +41,7 @@ GameObject:
   - component: {fileID: 143967484201447748}
   - component: {fileID: 114352794390162836}
   - component: {fileID: 114708418264724362}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,9 +57,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4340109565533546}
   - component: {fileID: 33007274742293398}
-  - component: {fileID: 64863755125985752}
   - component: {fileID: 23955949612530642}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AimMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +73,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4531211498175836}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,20 +217,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1400067306313208}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64863755125985752
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1661130233429020}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &114017553240471628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -262,7 +246,7 @@ MonoBehaviour:
   AngleInDegree: 90
   Speed: 4
   DeltaAngle: 10
-  ParticleRadius: 0.05
+  ParticleRadius: 0.2
   Cooldown: 1
 --- !u!114 &114622504136182442
 MonoBehaviour:
@@ -293,19 +277,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Root: {fileID: 1756506616889174}
---- !u!136 &136361461564428580
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1400067306313208}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &143967484201447748
 CharacterController:
   m_ObjectHideFlags: 1
@@ -322,4 +293,4 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
