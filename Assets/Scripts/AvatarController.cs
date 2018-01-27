@@ -25,6 +25,8 @@ public class AvatarController : MonoBehaviour
     public float maxMoveSpeed = 15.0f;
     public Vector3 newPosition;
 
+    private Vector3 lastNonZeroDirection;
+
     private void Awake()
     {
         Aim = GetComponent<Aim>();
@@ -61,7 +63,6 @@ public class AvatarController : MonoBehaviour
             {
                 triggerAction(direction, "Up");
 			}
-
             if (XCI.GetButtonDown(XboxButton.RightBumper, XboxController))
             {
                 triggerAction(direction, "Down");
@@ -84,6 +85,7 @@ public class AvatarController : MonoBehaviour
             }
     	}
     }
+
     public void SetRotation()
     {
       

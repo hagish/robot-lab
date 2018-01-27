@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Timeout: 3
-  Lifetime: 6
+  Lifetime: 3
   Direction: {x: 0, y: 0, z: -1}
   AngleInDegree: 90
   Speed: 4

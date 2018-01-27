@@ -18,14 +18,18 @@ public class Sender : MonoBehaviour {
 
     private void OnEnable()
     {
-        GetComponent<AvatarController>().triggerAction = (Vector3 direction, string command) => {
-            Trigger(direction, command);
-        }; 
+        if (GetComponent<AvatarController>() != null) {
+			GetComponent<AvatarController>().triggerAction = (Vector3 direction, string command) => {
+				Trigger(direction, command);
+			}; 
+        }
+
+        // StartCoroutine(TestSendLoop());
     }
 
     IEnumerator TestSendLoop () {
 		while (true) {
-            Trigger(Vector3.zero, "Up");
+            Trigger(Direction, "Up");
             yield return new WaitForSeconds(Timeout);
         }
 	}
@@ -35,7 +39,7 @@ public class Sender : MonoBehaviour {
         if (direction.sqrMagnitude <= 0f) return;
         nextTriggerTime = Time.time + Cooldown;
 
-        SigPartSystem.Instance.Spawn(new SigPartSystem.SignalInfo() {
+        SignalSystem.Instance.Spawn(new SignalSystem.Info() {
             AngleInDegree = AngleInDegree,
             Lifetime = Lifetime,
             MainDirection = direction,

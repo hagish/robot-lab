@@ -102,9 +102,7 @@ public class Agent : MonoBehaviour {
 		}
 	}
 
-    public void Hit(SigPart sigPart) {
-        Signal signal = sigPart.GetComponent<Signal>();
-
+    public void Hit(Signal signal) {
         // If signal originates from the wrong player(s), then ignore
         //if (signal.GetPlayerOriginId() != playerGroupId) return;
 
@@ -112,6 +110,6 @@ public class Agent : MonoBehaviour {
         if (signal.GetSignalGroupId() == currentSignalGroupId) return;
 
 		currentSignalGroupId = signal.GetSignalGroupId ();
-        ProcessCommand(signal.GetCommand(), signal.GetCommandDirection(), sigPart.Strength());
+        ProcessCommand(signal.GetCommand(), signal.GetCommandDirection(), signal.Strength());
     }
 }

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4649995703704576}
   - component: {fileID: 114917286172088780}
   m_Layer: 0
-  m_Name: SigPartSystem
+  m_Name: SignalSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,4 +51,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b74ccb46918e2422fbebb0148bc69a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Offset: {x: 0, y: 1, z: 0}
+  Entries:
+  - Command: Up
+    Material: {fileID: 2100000, guid: f7cb9da5c4c2d46fbb1529a92744c254, type: 2}
+    Color: {r: 1, g: 0, b: 0, a: 1}
+  - Command: Down
+    Material: {fileID: 2100000, guid: 1873b1a09061f4cd5a47616cdea2c362, type: 2}
+    Color: {r: 0.15862082, g: 0, b: 1, a: 1}
+  - Command: Left
+    Material: {fileID: 2100000, guid: 9a2c814c572c048349530052e92b6f61, type: 2}
+    Color: {r: 0.034482718, g: 1, b: 0, a: 1}
+  - Command: Right
+    Material: {fileID: 2100000, guid: 0b00e4c46ec2c4b098a8b711f0b8134c, type: 2}
+    Color: {r: 1, g: 0.8896551, b: 0, a: 1}
+  - Command: Block
+    Material: {fileID: 2100000, guid: 0b00e4c46ec2c4b098a8b711f0b8134c, type: 2}
+    Color: {r: 0.102941155, g: 0.018923007, b: 0.018923007, a: 1}
+  - Command: Move
+    Material: {fileID: 2100000, guid: 0b00e4c46ec2c4b098a8b711f0b8134c, type: 2}
+    Color: {r: 0, g: 1, b: 0.91724133, a: 1}
   Prefab: {fileID: 1345103609899760, guid: 729a70bd26df84ac6be0fba4618ddb70, type: 2}

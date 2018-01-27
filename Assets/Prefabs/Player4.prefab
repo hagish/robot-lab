@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Timeout: 3
-  Lifetime: 6
+  Lifetime: 3
   Direction: {x: 0, y: 0, z: -1}
   AngleInDegree: 90
   Speed: 4
@@ -261,8 +261,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInfo: {fileID: 114017553240471628}
   speed: 3
+  RotationSpeed: 15
   jumpSpeed: 8
   gravity: 20
+  XboxController: 0
   Aim: {fileID: 0}
   inputThreshold: 0.5
 --- !u!114 &114708418264724362
