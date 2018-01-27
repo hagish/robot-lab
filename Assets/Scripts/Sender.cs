@@ -97,7 +97,8 @@ public class Sender : MonoBehaviour {
             ParticleSize = ParticleRadius,
 			CommandDirection = direction.normalized,
             Command = command,
-        }, DeltaAngle);
+			playerSender = this
+		}, DeltaAngle);
     }
 
     private void OnDrawGizmosSelected()
@@ -111,4 +112,10 @@ public class Sender : MonoBehaviour {
         Energy = Mathf.Clamp01(Energy);
         UKMessenger.Broadcast<int, float>("energy_set", PlayerId, Energy);
     }
+
+	public void AddEnergyBoost(float energyBoost)
+	{
+		Energy += energyBoost;
+		Energy = Mathf.Clamp01(Energy);
+	}
 }

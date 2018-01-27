@@ -57,6 +57,11 @@ public class Signal : MonoBehaviour
                         p.position = Vector3.one * 10000f;
                         info.Particles[i] = p;
                     }
+
+					var powerUp = colliderResult [j].GetComponent<PowerUpScript> ();
+					if (powerUp != null) {
+						powerUp.Hit (this);
+					}
                 }
 				
                 //p.velocity = vel;
@@ -73,6 +78,7 @@ public class Signal : MonoBehaviour
     }
 
     public string GetCommand() {return info.Command;}
+	public Sender GetPlayerSender() {return info.playerSender;}
 	public int GetPlayerOriginId() {return info.PlayerOriginId;}
     public int GetSignalGroupId() {return info.SignalGroupId;}
     public Vector3 GetCommandDirection() {return info.CommandDirection;}
