@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using XboxCtrlrInput;
 
 public class AvatarController : MonoBehaviour 
 {
     public PlayerData playerInfo;
     public float speed = 15.0F;
-     public float RotationSpeed = 15.0F;
+    public float RotationSpeed = 15.0F;
     public float jumpSpeed = 8.0F;
     public float gravity = 20.0F;
     private Vector3 moveDirection = Vector3.zero;
+    public XboxController XboxController;
 
     public Aim Aim;
 
@@ -31,8 +33,10 @@ public class AvatarController : MonoBehaviour
 
        // if (controller.isGrounded)
         {
-            var dx = Input.GetAxisRaw(playerInfo.controllerId + "Horizontal");
-            var dy = Input.GetAxisRaw(playerInfo.controllerId + "Vertical");
+
+            float dx = XCI.GetAxis(XboxAxis.LeftStickX, XboxController);
+            float dy = XCI.GetAxis(XboxAxis.LeftStickY, XboxController);
+
             moveDirection = new Vector3(dx, 0, dy);
             if(moveDirection.magnitude > inputThreshold)
             {
@@ -44,8 +48,10 @@ public class AvatarController : MonoBehaviour
              }
         }
 
-        var dxR = Input.GetAxisRaw(playerInfo.controllerId + "HorizontalR");
-        var dyR = Input.GetAxisRaw(playerInfo.controllerId + "VerticalR");
+
+        float dxR = XCI.GetAxis(XboxAxis.RightStickX, XboxController);
+        float dyR = XCI.GetAxis(XboxAxis.RightStickY, XboxController);
+
         var direction = new Vector3(dxR, 0, dyR);
         if (Aim != null) Aim.SetDirection(direction);
 
