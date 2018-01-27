@@ -643,7 +643,7 @@ Prefab:
     - target: {fileID: 114391136198860212, guid: 003db150ce5efe5479e993a8b683ec49,
         type: 2}
       propertyPath: EnergyReg
-      value: 0.1
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 114391136198860212, guid: 003db150ce5efe5479e993a8b683ec49,
         type: 2}
@@ -804,7 +804,7 @@ Prefab:
     - target: {fileID: 114391136198860212, guid: 003db150ce5efe5479e993a8b683ec49,
         type: 2}
       propertyPath: EnergyReg
-      value: 0.1
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 114391136198860212, guid: 003db150ce5efe5479e993a8b683ec49,
         type: 2}
