@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerData : MonoBehaviour
-{
-	public string controllerId = "J1";
-
+public class UIScore : MonoBehaviour {
+	
+	void Update () {
+        
+	}
 }

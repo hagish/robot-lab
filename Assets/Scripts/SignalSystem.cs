@@ -38,6 +38,7 @@ public class SignalSystem : MonoBehaviour {
         public String Command;
         public int PlayerOriginId;
         public int SignalGroupId;
+        public float ParticleSize;
 
         public ParticleSystem.Particle[] Particles;
 
@@ -63,7 +64,7 @@ public class SignalSystem : MonoBehaviour {
         public float Radius;
     }
 
-    public void Spawn(Info info, float deltaAngle, float particleRadius) {
+    public void Spawn(Info info, float deltaAngle) {
         var id = nextSignalId;
         nextSignalId += 1;
 
@@ -104,7 +105,7 @@ public class SignalSystem : MonoBehaviour {
             p.velocity = dir * info.Speed;
             p.startColor = info.Color;
             p.remainingLifetime = info.Lifetime;
-            p.startSize = particleRadius;
+            p.startSize = info.ParticleSize;
 
             info.Particles[i] = p;
         }

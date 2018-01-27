@@ -45,10 +45,10 @@ public class Sender : MonoBehaviour {
             MainDirection = direction,
             Source = transform.position,
             Speed = Speed,
-
+            ParticleSize = ParticleRadius,
             CommandDirection = direction,
             Command = command,
-        }, DeltaAngle, ParticleRadius);
+        }, DeltaAngle);
     }
 
     private void OnDrawGizmosSelected()

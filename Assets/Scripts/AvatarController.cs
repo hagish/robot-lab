@@ -4,14 +4,12 @@ using XboxCtrlrInput;
 
 public class AvatarController : MonoBehaviour 
 {
-    public PlayerData playerInfo;
     public float speed = 15.0F;
     public float RotationSpeed = 3.0F;
     public float jumpSpeed = 8.0F;
     public float gravity = 20.0F;
-    private Vector3 moveDirection = Vector3.zero;
 
-    private Vector3 faceDirection = Vector3.fwd;
+    private Vector3 faceDirection = Vector3.forward;
     public XboxController XboxController;
 
     public Aim Aim;
@@ -59,19 +57,19 @@ public class AvatarController : MonoBehaviour
     {
        if (triggerAction != null) 
        {
-            if (XCI.GetButtonDown(XboxButton.LeftBumper, XboxController))
+            if (XCI.GetButton(XboxButton.LeftBumper, XboxController))
             {
                 triggerAction(direction, "Up");
 			}
-            if (XCI.GetButtonDown(XboxButton.RightBumper, XboxController))
+            if (XCI.GetButton(XboxButton.RightBumper, XboxController))
             {
                 triggerAction(direction, "Down");
             } 
-           if (XCI.GetButtonDown(XboxButton.LeftStick, XboxController))
+           if (XCI.GetButton(XboxButton.LeftStick, XboxController))
             {
                 triggerAction(direction, "Left");
             }
-            if (XCI.GetButtonDown(XboxButton.RightStick, XboxController))
+            if (XCI.GetButton(XboxButton.RightStick, XboxController))
             {
                 triggerAction(direction, "Right");
             }
