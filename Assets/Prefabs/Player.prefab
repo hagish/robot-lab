@@ -100,13 +100,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816328270691114}
-  m_LocalRotation: {x: -0.5000028, y: 0.49999726, z: -0.5000014, w: -0.49999857}
-  m_LocalPosition: {x: -0.02, y: 0.318, z: 1.01}
-  m_LocalScale: {x: 2.053774, y: 0.06530994, z: 1}
+  m_LocalRotation: {x: 0.86602443, y: -0, z: -0, w: 0.5000017}
+  m_LocalPosition: {x: 0, y: 0.482, z: 0.242}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4265250298417986}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -270, y: 0, z: 90.00001}
+  m_LocalEulerAnglesHint: {x: 120, y: -0.000015258789, z: -0.000015258789}
 --- !u!4 &4646600502246570
 Transform:
   m_ObjectHideFlags: 1
@@ -114,8 +114,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1800590012761324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.299, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0.218, z: 0}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_Children: []
   m_Father: {fileID: 4889723089106842}
   m_RootOrder: 0
@@ -216,7 +216,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816328270691114}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300010, guid: a902b95430868428d9e9a0681bf57fdd, type: 3}
 --- !u!54 &54634350792742288
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -276,13 +276,14 @@ MonoBehaviour:
   Timeout: 3
   Lifetime: 3
   Direction: {x: 0, y: 0, z: -1}
-  offsetDirection: 0
   AngleInDegree: 90
   Speed: 4
   DeltaAngle: 10
   ParticleRadius: 1
+  SpawnDistance: 0.5
   Energy: 0
   EnergyReg: 0
+  CooldownScale: 1
   Entries: []
 --- !u!114 &114673891617338984
 MonoBehaviour:
