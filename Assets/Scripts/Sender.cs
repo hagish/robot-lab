@@ -9,12 +9,12 @@ public class Sender : MonoBehaviour {
     public float Timeout = 1f;
     public float Lifetime = 1f;
     public Vector3 Direction;
-    public float offsetDirection;
     public float AngleInDegree = 180f;
     public float Speed = 1f;
 
     public float DeltaAngle = 1f;
     public float ParticleRadius = 0.5f;
+	public float SpawnDistance = 0.5f;
 
     public float Energy;
     public float EnergyReg;
@@ -73,11 +73,11 @@ public class Sender : MonoBehaviour {
         SignalSystem.Instance.Spawn(new SignalSystem.Info() {
             AngleInDegree = AngleInDegree,
             Lifetime = Lifetime,
-            MainDirection = direction,
-            Source = transform.position + direction.normalized *offsetDirection,
+			MainDirection = direction.normalized,
+            Source = transform.position,
             Speed = Speed,
             ParticleSize = ParticleRadius,
-            CommandDirection = direction,
+			CommandDirection = direction.normalized,
             Command = command,
         }, DeltaAngle);
     }

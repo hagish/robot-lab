@@ -37,6 +37,7 @@ public class SignalSystem : MonoBehaviour {
         public String Command;
         public int PlayerOriginId;
         public int SignalGroupId;
+		public float SpawnDistance;
         public float ParticleSize;
         public float Cost;
         public float warmupTime = 0.2f;
@@ -101,7 +102,7 @@ public class SignalSystem : MonoBehaviour {
 
             var p = info.Particles[i];
 
-            p.position = info.Source;
+			p.position = info.Source + info.SpawnDistance * dir;
             p.velocity = dir * info.Speed;
             p.startColor = info.Color;
             p.remainingLifetime = info.Lifetime;
