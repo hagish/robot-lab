@@ -31,6 +31,7 @@ public class Agent : MonoBehaviour {
 
     public int MaxCommandQueueLength = 3;
     private Queue<CommandEntry> commandQueue = new Queue<CommandEntry>();
+	private LevelScript levelScript;
 
     //public int playerGroupId;
 

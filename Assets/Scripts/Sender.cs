@@ -5,6 +5,8 @@ using UnityEngine;
 public class Sender : MonoBehaviour {
 
     public int PlayerId;
+	public AudioClip SendSignalAudioClip;
+	public AudioClip NoPowerAudioClip;
 
     public float Timeout = 1f;
     public float Lifetime = 1f;
@@ -25,10 +27,12 @@ public class Sender : MonoBehaviour {
 
     private float nextTriggerTime;
 	private Aim aim;
+	private AudioSource audioSource;
 
 	void Awake()
 	{
 		aim = GetComponent<Aim> ();
+		audioSource = GetComponent<AudioSource> ();
 	}
 
     [System.Serializable]
@@ -82,23 +86,34 @@ public class Sender : MonoBehaviour {
             }
         }
 		
-        if (cost > Energy) return;
-        waitTimepanValue = Time.time + waitTime;
-        nextTriggerTime = Time.time + cooldown;
-        Energy -= cost;
-        UKMessenger.Broadcast<int, float>("energy_set", PlayerId, Energy);
-        UKMessenger.Broadcast<int, float>("cooldowntime_set", PlayerId, nextTriggerTime);
-        SignalSystem.Instance.Spawn(new SignalSystem.Info() {
-            AngleInDegree = AngleInDegree,
-            Lifetime = Lifetime,
-			MainDirection = direction.normalized,
-            Source = transform.position,
-            Speed = Speed * speedFactor,
-            ParticleSize = ParticleRadius,
-			CommandDirection = direction.normalized,
-            Command = command,
-			playerSender = this
-		}, DeltaAngle);
+		if (cost > Energy) {
+			if (NoPowerAudioClip != null) {
+				audioSource.clip = NoPowerAudioClip;
+				audioSource.Play ();
+			}
+			return;
+		} else {
+			if (SendSignalAudioClip != null) {
+				audioSource.clip = SendSignalAudioClip;
+				audioSource.Play ();
+			}
+			waitTimepanValue = Time.time + waitTime;
+			nextTriggerTime = Time.time + cooldown;
+			Energy -= cost;
+			UKMessenger.Broadcast<int, float> ("energy_set", PlayerId, Energy);
+			UKMessenger.Broadcast<int, float> ("cooldowntime_set", PlayerId, nextTriggerTime);
+			SignalSystem.Instance.Spawn (new SignalSystem.Info () {
+				AngleInDegree = AngleInDegree,
+				Lifetime = Lifetime,
+				MainDirection = direction.normalized,
+				Source = transform.position,
+				Speed = Speed * speedFactor,
+				ParticleSize = ParticleRadius,
+				CommandDirection = direction.normalized,
+				Command = command,
+				playerSender = this
+			}, DeltaAngle);
+		}
     }
 
     private void OnDrawGizmosSelected()
