@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816328270691114}
   m_LocalRotation: {x: 0.86602443, y: -0, z: -0, w: 0.5000017}
-  m_LocalPosition: {x: 0, y: 0.482, z: 0.242}
+  m_LocalPosition: {x: 0, y: 0.698, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4265250298417986}
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   XboxController: 1
-  Aim: {fileID: 114673891617338984}
+  aim: {fileID: 0}
   inputThreshold: 0.5
   lastMoveDirection: {x: 0, y: 0, z: 0}
   maxMoveSpeed: 5
@@ -275,16 +275,38 @@ MonoBehaviour:
   PlayerId: 0
   Timeout: 3
   Lifetime: 3
-  Direction: {x: 0, y: 0, z: -1}
-  AngleInDegree: 90
-  Speed: 4
+  MinAngleInDegrees: 10
+  MaxAngleInDegrees: 30
+  MaxSpeed: 8
+  MinSpeed: 2
   DeltaAngle: 10
   ParticleRadius: 1
   SpawnDistance: 0.5
-  Energy: 0
-  EnergyReg: 0
-  CooldownScale: 1
-  Entries: []
+  Energy: 1
+  EnergyReg: 0.02
+  Direction: {x: 0, y: 0, z: -1}
+  CooldownScale: 0.25
+  Entries:
+  - Command: Up
+    Cost: 0.1
+    Cooldown: 2
+    SpeedFactor: 1
+  - Command: Down
+    Cost: 0.1
+    Cooldown: 2
+    SpeedFactor: 1
+  - Command: Left
+    Cost: 0.1
+    Cooldown: 2
+    SpeedFactor: 1
+  - Command: Right
+    Cost: 0.1
+    Cooldown: 2
+    SpeedFactor: 1
+  - Command: Block
+    Cost: 0.1
+    Cooldown: 3
+    SpeedFactor: 6
 --- !u!114 &114673891617338984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -298,3 +320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Root: {fileID: 1661685371631844}
   lerpSpeed: 0.005
+  MinAngleInDegrees: 10
+  MaxAngleInDegrees: 180
+  InitConeFraction: 0.5
+  OpeningSpeed: 1
