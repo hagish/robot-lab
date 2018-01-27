@@ -51,6 +51,7 @@ public class AvatarController : MonoBehaviour
         //CommandList.Add("Block");
 
         ActionCommands = new List<string>();
+        AddCommand(_selectedCommand);
 
     }
 
