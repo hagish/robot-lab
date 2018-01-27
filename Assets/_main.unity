@@ -760,6 +760,11 @@ Prefab:
       propertyPath: offsetDirection
       value: 1.14
       objectReference: {fileID: 0}
+    - target: {fileID: 114391136198860212, guid: 003db150ce5efe5479e993a8b683ec49,
+        type: 2}
+      propertyPath: CooldownScale
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 003db150ce5efe5479e993a8b683ec49, type: 2}
   m_IsPrefabParent: 0
@@ -1092,6 +1097,11 @@ Prefab:
         type: 2}
       propertyPath: Entries.Array.data[5].Cooldown
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114391136198860212, guid: 003db150ce5efe5479e993a8b683ec49,
+        type: 2}
+      propertyPath: CooldownScale
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 003db150ce5efe5479e993a8b683ec49, type: 2}

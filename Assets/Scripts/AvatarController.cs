@@ -44,8 +44,8 @@ public class AvatarController : MonoBehaviour
         // Left stick movement
         Rigidbody controller = GetComponent<Rigidbody>();
         newPosition = transform.position;
-        float axisX = XCI.GetAxis(XboxAxis.LeftStickX, XboxController);
-        float axisY = XCI.GetAxis(XboxAxis.LeftStickY, XboxController);
+        float axisX = InputManager.Get(XboxController).GetAxis(XboxAxis.LeftStickX);
+        float axisY = InputManager.Get(XboxController).GetAxis(XboxAxis.LeftStickY);
         float newPosX = newPosition.x + (axisX * maxMoveSpeed * Time.deltaTime);
         float newPosZ = newPosition.z + (axisY * maxMoveSpeed * Time.deltaTime);
         newPosition = new Vector3(newPosX, transform.position.y, newPosZ);
@@ -57,28 +57,28 @@ public class AvatarController : MonoBehaviour
     {
        if (triggerAction != null) 
        {
-            if (XCI.GetButton(XboxButton.Y, XboxController))
+            if (InputManager.Get(XboxController).GetButton(XboxButton.Y))
             {
                 triggerAction(direction, "Up");
 			}
-            if (XCI.GetButton(XboxButton.A, XboxController))
+            if (InputManager.Get(XboxController).GetButton(XboxButton.A))
             {
                 triggerAction(direction, "Down");
             } 
-            if (XCI.GetButton(XboxButton.X, XboxController))
+            if (InputManager.Get(XboxController).GetButton(XboxButton.X))
             {
                 triggerAction(direction, "Left");
             }
-            if (XCI.GetButton(XboxButton.B, XboxController))
+            if (InputManager.Get(XboxController).GetButton(XboxButton.B))
             {
                 triggerAction(direction, "Right");
             }
 
-            if (XCI.GetAxis(XboxAxis.LeftTrigger, XboxController) > inputThreshold)
+            if (InputManager.Get(XboxController).GetAxis(XboxAxis.LeftTrigger) > inputThreshold)
             {
                 triggerAction(direction, "Block");
             }
-            if (XCI.GetAxis(XboxAxis.RightTrigger, XboxController) > inputThreshold)
+            if (InputManager.Get(XboxController).GetAxis(XboxAxis.RightTrigger) > inputThreshold)
             {
                 triggerAction(direction, "Move");
             }
@@ -88,8 +88,8 @@ public class AvatarController : MonoBehaviour
     public void SetRotation()
     {
       
-        float dxR = XCI.GetAxis(XboxAxis.RightStickX, XboxController);
-        float dyR = XCI.GetAxis(XboxAxis.RightStickY, XboxController);
+        float dxR = InputManager.Get(XboxController).GetAxis(XboxAxis.RightStickX);
+        float dyR = InputManager.Get(XboxController).GetAxis(XboxAxis.RightStickY);
 
         var direction = new Vector3(dxR, 0, dyR);
      
