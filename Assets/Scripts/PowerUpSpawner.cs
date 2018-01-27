@@ -11,6 +11,8 @@ public class PowerUpSpawner : MonoBehaviour
 	private float timeLastSpawn;
 	private float timeNextSpawn;
 
+    private GameObject lastSpawned;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -24,9 +26,9 @@ public class PowerUpSpawner : MonoBehaviour
 	{
 		if (Time.time >= timeNextSpawn) {
 			int numPowerUps = powerUpPrefabs.Length;
-			if (numPowerUps > 0) {
+            if (numPowerUps > 0 && lastSpawned == null) {
 				int iPowerUp = Random.Range (0, numPowerUps - 1);
-				Instantiate (powerUpPrefabs [iPowerUp], transform.position, Quaternion.identity);
+                lastSpawned = Instantiate (powerUpPrefabs [iPowerUp], transform.position, Quaternion.identity);
 				Debug.Log ("Instantiated power-up : " + iPowerUp + "   tNext : " + timeNextSpawn);
 			}
 			timeLastSpawn = Time.time;
