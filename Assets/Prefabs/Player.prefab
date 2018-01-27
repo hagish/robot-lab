@@ -255,15 +255,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78521ae4dde4d6b4f90f9b5c3d740fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  RotationSpeed: 15
-  jumpSpeed: 8
-  gravity: 20
   XboxController: 1
   Aim: {fileID: 114673891617338984}
   inputThreshold: 0.5
   lastMoveDirection: {x: 0, y: 0, z: 0}
-  maxMoveSpeed: 3
+  maxMoveSpeed: 5
   newPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &114391136198860212
 MonoBehaviour:
@@ -276,14 +272,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e55bcd8b75094b8cb849d2e4c85144f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerId: 0
   Timeout: 3
   Lifetime: 3
   Direction: {x: 0, y: 0, z: -1}
+  offsetDirection: 0
   AngleInDegree: 90
   Speed: 4
   DeltaAngle: 10
   ParticleRadius: 1
-  Cooldown: 1
+  Energy: 0
+  EnergyReg: 0
+  Entries: []
 --- !u!114 &114673891617338984
 MonoBehaviour:
   m_ObjectHideFlags: 1

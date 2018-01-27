@@ -4,8 +4,6 @@ using XboxCtrlrInput;
 
 public class AvatarController : MonoBehaviour 
 {
-    public float speed = 15.0F;
-
     private Vector3 faceDirection = Vector3.forward;
     public XboxController XboxController;
 

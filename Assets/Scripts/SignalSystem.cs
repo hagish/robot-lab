@@ -39,6 +39,7 @@ public class SignalSystem : MonoBehaviour {
         public int SignalGroupId;
         public float ParticleSize;
         public float Cost;
+        public float warmupTime = 0.2f;
 
         public ParticleSystem.Particle[] Particles;
 

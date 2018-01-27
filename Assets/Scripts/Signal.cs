@@ -35,8 +35,11 @@ public class Signal : MonoBehaviour
         if (info == null) return;
 
         ParticleSystem.GetParticles(info.Particles);
-
-        if (Time.time - spawnTime > info.Lifetime) {
+        if(Time.time - spawnTime < info.warmupTime)
+        {
+            
+        }
+        else if (Time.time - spawnTime > info.Lifetime) {
             GameObject.Destroy(gameObject);
         } else {
             for (int i = 0; i < info.Particles.Length; ++i) {
