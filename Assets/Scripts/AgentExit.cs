@@ -18,6 +18,7 @@ public class AgentExit : MonoBehaviour {
 				Debug.Log ("Destroying agent");
 				Destroy (other.gameObject);
                 scored += 1;
+                UKMessenger.Broadcast<int, int>("score_set", playerExitId, scored);
 			}
 		}
 	}

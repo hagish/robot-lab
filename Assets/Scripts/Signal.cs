@@ -41,7 +41,7 @@ public class Signal : MonoBehaviour
         } else {
             for (int i = 0; i < info.Particles.Length; ++i) {
                 var p = info.Particles[i];
-                int count = Physics.OverlapSphereNonAlloc(p.position, info.ParticleSize, colliderResult, CollisionLayerMask);
+                int count = Physics.OverlapSphereNonAlloc(p.position.SetY(0f), info.ParticleSize, colliderResult, CollisionLayerMask);
                 for (int j = 0; j < count; ++j) {
                     var agent = colliderResult[j].GetComponent<Agent>();
                     if (agent != null) {
