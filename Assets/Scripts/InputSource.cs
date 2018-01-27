@@ -7,6 +7,7 @@ public abstract class InputSource {
 
     public abstract float GetAxis(XboxAxis axis);
     public abstract bool GetButton(XboxButton button);
+    public abstract bool GetButtonDown(XboxButton button);
 }
 
 public class InputSourceXbox : InputSource {
@@ -20,8 +21,14 @@ public class InputSourceXbox : InputSource {
         return XCI.GetAxis(axis, XboxController);
     }
 
-    public override bool GetButton(XboxButton button) {
+    public override bool GetButton(XboxButton button)
+    {
         return XCI.GetButton(button, XboxController);
+    }
+
+     public override bool GetButtonDown(XboxButton button)
+    {
+        return XCI.GetButtonDown(button, XboxController);
     }
 }
 
@@ -46,6 +53,20 @@ public class InputSourceKeyboard : InputSource {
             if (Input.GetKey(code)) return true;
             else return false;
         } else {
+            return false;
+        }
+    }
+
+    public override bool GetButtonDown(XboxButton button)
+    {
+        KeyCode code;
+        if (buttonMapping.TryGetValue(button, out code))
+        {
+            if (Input.GetKeyDown(code)) return true;
+            else return false;
+        }
+        else
+        {
             return false;
         }
     }
@@ -75,12 +96,25 @@ public class InputSourceChain : InputSource {
         return 0f;
     }
 
-    public override bool GetButton(XboxButton button) { 
-        foreach (var source in sources) {
+    public override bool GetButton(XboxButton button)
+    {
+        foreach (var source in sources)
+        {
             var d = source.GetButton(button);
             if (d) return d;
         }
         return false;
+    }
+
+     public override bool GetButtonDown(XboxButton button)
+    {
+        foreach (var source in sources)
+        {
+            var d = source.GetButtonDown(button);
+            if (d) return d;
+        }
+        return false;
+
     }
 }
 
