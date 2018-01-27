@@ -5,8 +5,9 @@ using UnityEngine;
 public class Aim : MonoBehaviour
 {    
 	public GameObject Root;
-	//public GameObject ConeLeft;
-	//public GameObject ConeRight;
+	public GameObject ConeLeft;
+	public GameObject ConeRight;
+
     public float lerpSpeed = 0.005f;
 	public float MinAngleInDegrees = 10.0f;
 	public float MaxAngleInDegrees = 180.0f;
@@ -19,6 +20,7 @@ public class Aim : MonoBehaviour
 	private Vector3 direction;
     private Vector3 lastDirection = Vector3.zero;
 
+
 	void Awake()
 	{
 		ConeFraction = InitConeFraction;
@@ -28,14 +30,15 @@ public class Aim : MonoBehaviour
 
 	void Update()
 	{
+		AngleInDegrees = Mathf.Lerp (MinAngleInDegrees, MaxAngleInDegrees, ConeFraction);
 		Quaternion lastAngle = Quaternion.LookRotation(lastDirection);
 		Quaternion newAngle = Quaternion.LookRotation(direction);
-		Root.transform.rotation = Quaternion.RotateTowards(lastAngle, newAngle, lerpSpeed);
-		//ConeLeft.transform.rotation = Root.transform.rotation;
-		//ConeRight.transform.rotation = Root.transform.rotation;
 		lastDirection = direction;
-
-		AngleInDegrees = Mathf.Lerp (MinAngleInDegrees, MaxAngleInDegrees, ConeFraction);
+		Root.transform.rotation = Quaternion.RotateTowards(lastAngle, newAngle, lerpSpeed);
+		float directionAngle = Root.transform.eulerAngles.y;
+		Debug.Log ("DIRECTION ANGLE : " + directionAngle);
+		ConeLeft.transform.eulerAngles = new Vector3 (0.0f, directionAngle - 0.5f * AngleInDegrees, 0.0f);
+		ConeRight.transform.eulerAngles = new Vector3 (0.0f, directionAngle + 0.5f * AngleInDegrees, 0.0f);
 	}
 
 	public void IncreaseConeAngle()
