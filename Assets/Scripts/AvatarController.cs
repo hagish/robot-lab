@@ -162,11 +162,14 @@ public class AvatarController : MonoBehaviour
         {
             --commandCounter;
         }
-        if (InputManager.Get(XboxController).GetButtonDown(XboxButton.RightBumper))
+        else if (InputManager.Get(XboxController).GetButtonDown(XboxButton.RightBumper))
         {
             ++commandCounter;
         }
-
+        else
+        {
+            return "";
+        }
         int commandIndex = commandCounter % CommandList.Count;
         commandText = CommandList[commandIndex];
         return commandText;
