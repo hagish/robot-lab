@@ -20,6 +20,8 @@ public class Sender : MonoBehaviour {
     public float EnergyReg;
 	public Vector3 Direction;
 
+    public float CooldownScale = 1f;
+
 	private float nextTriggerTime;
 	private Aim aim;
 
@@ -69,7 +71,7 @@ public class Sender : MonoBehaviour {
 
         foreach (var it in Entries) {
             if (it.Command == command) {
-                cooldown = it.Cooldown;
+                cooldown = it.Cooldown * CooldownScale;
                 cost = it.Cost;
             }
         }

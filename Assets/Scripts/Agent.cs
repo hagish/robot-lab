@@ -19,6 +19,15 @@ public class Agent : MonoBehaviour {
     public Material MaterialActive;
     public Material MaterialInactive;
 
+    public struct CommandEntry {
+        public string Command;
+        public Vector3 Direction;
+        public float Strength;
+    }
+
+	public int MaxCommandQueueLength = 3;
+    private Queue<CommandEntry> commandQueue = new Queue<CommandEntry>();
+
 	//public int playerGroupId;
 
 
@@ -38,6 +47,11 @@ public class Agent : MonoBehaviour {
 
     private void Update() {
         if (Renderer != null) Renderer.sharedMaterial = IsCommandActive() ? MaterialActive : MaterialInactive;
+
+        if (commandQueue.Count > 0 && !IsCommandActive()) {
+            var entry = commandQueue.Dequeue();
+            ProcessCommand(entry.Command, entry.Direction, entry.Strength);
+        }
     }
 
     void FixedUpdate ()
@@ -59,7 +73,6 @@ public class Agent : MonoBehaviour {
 		dir = newDir;
 		timeLastSignal = Time.time;
 	}
-
 
     void ProcessCommand(string command, Vector3 commandDirection, float strength)
 	{        
@@ -110,6 +123,14 @@ public class Agent : MonoBehaviour {
         if (signal.GetSignalGroupId() == currentSignalGroupId) return;
 
 		currentSignalGroupId = signal.GetSignalGroupId ();
-        ProcessCommand(signal.GetCommand(), signal.GetCommandDirection(), signal.Strength());
+        if (IsCommandActive() && commandQueue.Count < MaxCommandQueueLength) {
+            commandQueue.Enqueue(new CommandEntry() {
+                Command = signal.GetCommand(),
+                Direction = signal.GetCommandDirection(),
+                Strength = signal.Strength(),
+            });
+        } else {            
+			ProcessCommand(signal.GetCommand(), signal.GetCommandDirection(), signal.Strength());
+        }
     }
 }
