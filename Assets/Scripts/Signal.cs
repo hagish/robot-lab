@@ -1,25 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Signal : MonoBehaviour
 {
-	private string command;
-	private int playerOriginId;
-	private int signalGroupId;
+    SigPartSystem.SignalInfo info;
 
     public void SetCommand(SigPartSystem.SignalInfo info){
-        SetCommand(info.Command, info.PlayerOriginId, info.SignalGroupId);
+        this.info = info;
     }
 
-	public void SetCommand(string _command, int _playerOriginId, int _signalGroupId)
-	{
-		command        = _command;
-		playerOriginId = _playerOriginId;
-		signalGroupId  = _signalGroupId;
-	}
-
-	public string GetCommand() {return command;}
-	public int GetPlayerOriginId() {return playerOriginId;}
-	public int GetSignalGroupId() {return signalGroupId;}
+	public string GetCommand() {return info.Command;}
+	public int GetPlayerOriginId() {return info.PlayerOriginId;}
+    public int GetSignalGroupId() {return info.SignalGroupId;}
+    public Vector3 GetCommandDirection() {return info.CommandDirection;}
 }

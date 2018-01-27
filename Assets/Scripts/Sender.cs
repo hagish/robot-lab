@@ -42,6 +42,7 @@ public class Sender : MonoBehaviour {
             Source = transform.position,
             Speed = Speed,
 
+            CommandDirection = direction,
             Command = command,
         }, DeltaAngle, ParticleRadius);
     }

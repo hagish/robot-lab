@@ -49,12 +49,15 @@ public class Agent : MonoBehaviour {
 	}
 
 
-	void ProcessCommand(string command)
+    void ProcessCommand(string command, Vector3 commandDirection)
 	{
         if (IsCommandActive()) return;
 
  		switch (command)
 		{
+            case "Move":
+                ChangeDirection(commandDirection);
+                break;
 		case "Left":
 			//Debug.Log ("Agent moving left");
 			ChangeDirection (new Vector3 (-1.0f, 0.0f, 0.0f));
@@ -91,6 +94,6 @@ public class Agent : MonoBehaviour {
         if (signal.GetSignalGroupId() == currentSignalGroupId) return;
 
 		currentSignalGroupId = signal.GetSignalGroupId ();
-        ProcessCommand(signal.GetCommand());
+        ProcessCommand(signal.GetCommand(), signal.GetCommandDirection());
     }
 }

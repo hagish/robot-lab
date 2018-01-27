@@ -58,6 +58,9 @@ public class AvatarController : MonoBehaviour
             if (Input.GetKey(KeyCode.L)) {
                 triggerAction(direction, "Right");
             }
+            if (Input.GetKey(KeyCode.Space)) {
+                triggerAction(direction, "Move");
+            }
     	}
             
     }

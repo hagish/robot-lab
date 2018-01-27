@@ -31,6 +31,7 @@ public class SigPartSystem : MonoBehaviour {
         public float Lifetime;
 
         public Material Material;
+        public Vector3 CommandDirection;
         public String Command;
         public int PlayerOriginId;
         public int SignalGroupId;
