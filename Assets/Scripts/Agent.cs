@@ -10,6 +10,9 @@ public class Agent : MonoBehaviour {
     public float commandDuration = 1f;
 	public float movementSpeed = 0.05f;
 
+
+    public bool IsToZeroOnDeath;
+
 	private int currentSignalGroupId;
 	private float timeLastSignal;
 	private Vector3 dir;
@@ -17,6 +20,7 @@ public class Agent : MonoBehaviour {
 
     public Renderer Renderer;
     public Material MaterialActive;
+
     public Material MaterialInactive;
 
     public struct CommandEntry {
@@ -25,17 +29,30 @@ public class Agent : MonoBehaviour {
         public float Strength;
     }
 
-	public int MaxCommandQueueLength = 3;
+    public int MaxCommandQueueLength = 3;
     private Queue<CommandEntry> commandQueue = new Queue<CommandEntry>();
 
-	//public int playerGroupId;
+    //public int playerGroupId;
 
 
-	void Awake()
-	{
-		dir = new Vector3 (0.0f, 0.0f, 0.0f);
-		timeLastSignal = -100.0f;
-		currentSignalGroupId = -1;
+	internal void ExitReached(AgentExit agentExit) {
+        if (IsToZeroOnDeath) {
+            transform.position = Vector3.zero;
+            Reset();
+        }
+		else GameObject.Destroy(gameObject);
+	}
+
+    public void Reset() {
+        commandQueue.Clear();
+        dir = new Vector3(0.0f, 0.0f, 0.0f);
+        timeLastSignal = -100.0f;
+        currentSignalGroupId = -1;
+    }
+		
+    void Awake()
+    {
+        Reset();
 		rb = GetComponent<Rigidbody> ();
 
         if (Renderer == null) Renderer = GetComponentInChildren<Renderer>();
@@ -46,7 +63,7 @@ public class Agent : MonoBehaviour {
     }
 
     private void Update() {
-        if (Renderer != null) Renderer.sharedMaterial = IsCommandActive() ? MaterialActive : MaterialInactive;
+        if (Renderer != null) Renderer.sharedMaterial = IsCommandActive() ? MaterialInactive : MaterialActive;
 
         if (commandQueue.Count > 0 && !IsCommandActive()) {
             var entry = commandQueue.Dequeue();

@@ -35,6 +35,7 @@ public class Sender : MonoBehaviour {
         public string Command;
         public float Cost;
         public float Cooldown;
+        public float SpeedFactor;
     }
 
     public List<Entry> Entries;
@@ -70,10 +71,13 @@ public class Sender : MonoBehaviour {
 		float Speed = Mathf.Lerp (MinSpeed, MaxSpeed, 1.0f - ConeFraction);
 		Debug.Log ("Speed : " + Speed + "  " + MinSpeed + "  " + MaxSpeed + "  " + ConeFraction + "  " + AngleInDegree);
 
+        float speedFactor = 1f;
+
         foreach (var it in Entries) {
             if (it.Command == command) {
                 cooldown = it.Cooldown * CooldownScale;
                 cost = it.Cost;
+                speedFactor = it.SpeedFactor;
             }
         }
 		
@@ -88,7 +92,7 @@ public class Sender : MonoBehaviour {
             Lifetime = Lifetime,
 			MainDirection = direction.normalized,
             Source = transform.position,
-            Speed = Speed,
+            Speed = Speed * speedFactor,
             ParticleSize = ParticleRadius,
 			CommandDirection = direction.normalized,
             Command = command,
