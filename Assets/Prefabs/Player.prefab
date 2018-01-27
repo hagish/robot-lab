@@ -282,7 +282,7 @@ MonoBehaviour:
   AngleInDegree: 90
   Speed: 4
   DeltaAngle: 10
-  ParticleRadius: 0.2
+  ParticleRadius: 1
   Cooldown: 1
 --- !u!114 &114673891617338984
 MonoBehaviour:

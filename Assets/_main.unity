@@ -1098,6 +1098,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 114643001317925514, guid: 896c6a063afd441ca84e0b8495e150ea,
+        type: 2}
+      propertyPath: playerExitId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554022561690404, guid: 896c6a063afd441ca84e0b8495e150ea, type: 2}
+      propertyPath: m_Name
+      value: AgentExit1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 896c6a063afd441ca84e0b8495e150ea, type: 2}
   m_IsPrefabParent: 0
@@ -1142,7 +1151,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1554022561690404, guid: 896c6a063afd441ca84e0b8495e150ea, type: 2}
       propertyPath: m_Name
-      value: AgentExit (1)
+      value: AgentExit2
       objectReference: {fileID: 0}
     - target: {fileID: 23953527903195596, guid: 896c6a063afd441ca84e0b8495e150ea,
         type: 2}
@@ -1152,7 +1161,7 @@ Prefab:
     - target: {fileID: 114643001317925514, guid: 896c6a063afd441ca84e0b8495e150ea,
         type: 2}
       propertyPath: playerExitId
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 896c6a063afd441ca84e0b8495e150ea, type: 2}

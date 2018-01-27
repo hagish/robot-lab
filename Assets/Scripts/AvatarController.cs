@@ -57,29 +57,30 @@ public class AvatarController : MonoBehaviour
     {
        if (triggerAction != null) 
        {
-            if (XCI.GetButton(XboxButton.LeftBumper, XboxController))
+            if (XCI.GetButton(XboxButton.Y, XboxController))
             {
                 triggerAction(direction, "Up");
 			}
-            if (XCI.GetButton(XboxButton.RightBumper, XboxController))
+            if (XCI.GetButton(XboxButton.A, XboxController))
             {
                 triggerAction(direction, "Down");
             } 
-           if (XCI.GetButton(XboxButton.LeftStick, XboxController))
+           if (XCI.GetButton(XboxButton.X, XboxController))
             {
                 triggerAction(direction, "Left");
             }
-            if (XCI.GetButton(XboxButton.RightStick, XboxController))
+            if (XCI.GetButton(XboxButton.B, XboxController))
             {
                 triggerAction(direction, "Right");
             }
+
             if (XCI.GetAxis(XboxAxis.LeftTrigger, XboxController) > 0.6f)
             {
-                triggerAction(direction, "Move");
+                triggerAction(direction, "Block");
             }
             if (XCI.GetAxis(XboxAxis.RightTrigger, XboxController) > 0.6f)
             {
-                triggerAction(direction, "Block");
+                triggerAction(direction, "Move");
             }
     	}
     }
