@@ -21,8 +21,11 @@ public class Sender : MonoBehaviour {
 	public Vector3 Direction;
 
     public float CooldownScale = 1f;
+    private float waitTimepanValue;
+    public float coolDownWindow = 2.0f;
+    public float waitTime = 0.2f;
 
-	private float nextTriggerTime;
+    private float nextTriggerTime;
 	private Aim aim;
 
 	void Awake()
@@ -59,7 +62,7 @@ public class Sender : MonoBehaviour {
 	}
 
     void Trigger(Vector3 direction, string command) {
-        if (Time.time <= nextTriggerTime) return;
+        if (Time.time <= ( nextTriggerTime - coolDownWindow ) || Time.time <= waitTimepanValue) return;
         if (direction.sqrMagnitude <= 0f) return;
 
         float cooldown = 0f;
@@ -78,7 +81,7 @@ public class Sender : MonoBehaviour {
         }
 		
         if (cost > Energy) return;
-
+        waitTimepanValue = Time.time + waitTime;
         nextTriggerTime = Time.time + cooldown;
         Energy -= cost;
         UKMessenger.Broadcast<int, float>("energy_set", PlayerId, Energy);
