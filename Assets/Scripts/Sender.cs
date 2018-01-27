@@ -70,7 +70,7 @@ public class Sender : MonoBehaviour {
 		float ConeFraction = aim.GetConeFraction ();
 		float AngleInDegree = aim.GetAngleInDegrees ();
 		float Speed = Mathf.Lerp (MinSpeed, MaxSpeed, 1.0f - ConeFraction);
-		Debug.Log ("Speed : " + Speed + "  " + MinSpeed + "  " + MaxSpeed + "  " + ConeFraction + "  " + AngleInDegree);
+		// Debug.Log ("Speed : " + Speed + "  " + MinSpeed + "  " + MaxSpeed + "  " + ConeFraction + "  " + AngleInDegree);
 
         float speedFactor = 1f;
 

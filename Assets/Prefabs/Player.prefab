@@ -478,8 +478,8 @@ MonoBehaviour:
   Timeout: 3
   Lifetime: 3
   MaxSpeed: 8
-  MinSpeed: 1
-  DeltaAngle: 10
+  MinSpeed: 2
+  DeltaAngle: 5
   ParticleRadius: 1
   SpawnDistance: 0.5
   Energy: 1
@@ -508,7 +508,7 @@ MonoBehaviour:
   - Command: Block
     Cost: 0.1
     Cooldown: 3
-    SpeedFactor: 6
+    SpeedFactor: 4
 --- !u!114 &114673891617338984
 MonoBehaviour:
   m_ObjectHideFlags: 1
