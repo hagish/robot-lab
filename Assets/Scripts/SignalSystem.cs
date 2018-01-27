@@ -33,12 +33,12 @@ public class SignalSystem : MonoBehaviour {
         public float Speed;
         public float Lifetime;
         public Color Color;
-        public Material Material;
         public Vector3 CommandDirection;
         public String Command;
         public int PlayerOriginId;
         public int SignalGroupId;
         public float ParticleSize;
+        public float Cost;
 
         public ParticleSystem.Particle[] Particles;
 
@@ -71,7 +71,6 @@ public class SignalSystem : MonoBehaviour {
         info.SignalGroupId = id;
         foreach (var it in Entries) {
             if (it.Command == info.Command) {
-                info.Material = it.Material;
                 info.Color = it.Color;
             }
         }
@@ -86,7 +85,7 @@ public class SignalSystem : MonoBehaviour {
         var signal = go.GetComponent<Signal>();
 
         info.Particles = new ParticleSystem.Particle[maxI + 1];
-		
+
         signal.Init(info);
 
         for (int i = 0; i <= maxI; ++i) {

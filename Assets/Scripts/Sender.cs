@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Sender : MonoBehaviour {
 
+    public int PlayerId;
+
     public float Timeout = 1f;
     public float Lifetime = 1f;
     public Vector3 Direction;
@@ -13,14 +15,26 @@ public class Sender : MonoBehaviour {
     public float DeltaAngle = 1f;
     public float ParticleRadius = 0.5f;
 
-    public float Cooldown;
-    private float nextTriggerTime;
+    public float Energy;
+    public float EnergyReg;
+
+	private float nextTriggerTime;
+
+    [System.Serializable]
+    public class Entry {
+        public string Command;
+        public float Cost;
+        public float Cooldown;
+    }
+
+    public List<Entry> Entries;
 
     private void OnEnable()
     {
         if (GetComponent<AvatarController>() != null) {
 			GetComponent<AvatarController>().triggerAction = (Vector3 direction, string command) => {
-				Trigger(direction, command);
+				
+                Trigger(direction, command);
 			}; 
         }
 
@@ -37,7 +51,22 @@ public class Sender : MonoBehaviour {
     void Trigger(Vector3 direction, string command) {
         if (Time.time <= nextTriggerTime) return;
         if (direction.sqrMagnitude <= 0f) return;
-        nextTriggerTime = Time.time + Cooldown;
+
+        float cooldown = 0f;
+        float cost = 0f;
+
+        foreach (var it in Entries) {
+            if (it.Command == command) {
+                cooldown = it.Cooldown;
+                cost = it.Cost;
+            }
+        }
+		
+        if (cost > Energy) return;
+
+        nextTriggerTime = Time.time + cooldown;
+        Energy -= cost;
+        UKMessenger.Broadcast<int, float>("energy_set", PlayerId, Energy);
 
         SignalSystem.Instance.Spawn(new SignalSystem.Info() {
             AngleInDegree = AngleInDegree,
@@ -55,5 +84,11 @@ public class Sender : MonoBehaviour {
     {
         Gizmos.color = Color.magenta;
         Gizmos.DrawLine(transform.position, transform.position + Direction);
+    }
+
+    private void FixedUpdate() {
+        Energy += EnergyReg * Time.deltaTime;
+        Energy = Mathf.Clamp01(Energy);
+        UKMessenger.Broadcast<int, float>("energy_set", PlayerId, Energy);
     }
 }

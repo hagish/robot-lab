@@ -11,7 +11,7 @@ public class AgentExit : MonoBehaviour {
 	{
         if (other.gameObject.GetComponentInParent<Agent>() != null)
 		{
-			Debug.Log ("Agent collision detected");
+			//Debug.Log ("Agent collision detected");
 			Agent agent = other.gameObject.GetComponent<Agent> ();
 			// if (agent.playerGroupId == playerExitId) 
             {

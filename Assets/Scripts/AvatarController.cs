@@ -27,11 +27,18 @@ public class AvatarController : MonoBehaviour
         Aim = GetComponent<Aim>();
     }
 
-    void FixedUpdate() 
+    private void Start() {
+    }
+
+    void Update()
     {
         Movement();
         SetRotation();
         CallTrigger(faceDirection);    
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            XboxController = XboxController == XboxController.First ? XboxController.Second : XboxController.First;
+		}
     }
 
     public void Movement()
@@ -46,8 +53,6 @@ public class AvatarController : MonoBehaviour
         newPosition = new Vector3(newPosX, transform.position.y, newPosZ);
         controller.MovePosition(newPosition);
        // transform.position = newPosition;
-        
-
     }
 
     public void CallTrigger(Vector3 direction)
@@ -62,7 +67,7 @@ public class AvatarController : MonoBehaviour
             {
                 triggerAction(direction, "Down");
             } 
-           if (XCI.GetButton(XboxButton.X, XboxController))
+            if (XCI.GetButton(XboxButton.X, XboxController))
             {
                 triggerAction(direction, "Left");
             }

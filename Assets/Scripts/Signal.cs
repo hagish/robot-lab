@@ -50,7 +50,9 @@ public class Signal : MonoBehaviour
                     var wall = colliderResult[j].GetComponent<Wall>();
                     if (wall != null) {
                         // GameObject.Destroy(gameObject);
-                        // TODO destroy one
+                        p.velocity = Vector3.zero;
+                        p.position = Vector3.one * 10000f;
+                        info.Particles[i] = p;
                     }
                 }
 				
