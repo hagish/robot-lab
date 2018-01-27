@@ -27,6 +27,7 @@ public class SignalSystem : MonoBehaviour {
 
     [System.Serializable]
     public class Info {
+		public Sender playerSender;
         public Vector3 Source;
         public Vector3 MainDirection;
         public float AngleInDegree;

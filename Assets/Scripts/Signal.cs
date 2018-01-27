@@ -67,25 +67,34 @@ public class Signal : MonoBehaviour
                             p.position = Vector3.one * 10000f;
                             info.Particles[i] = p;
                         }
+						var powerUp = hitResult [j].collider.GetComponent<PowerUpScript> ();
+						if (powerUp != null) {
+							powerUp.Hit (this);
+						}
                     }
                     UnityEngine.Profiling.Profiler.EndSample();
                 } else {
                     UnityEngine.Profiling.Profiler.BeginSample("OverlapSphere");
                     int count = Physics.OverlapSphereNonAlloc(p.position.SetY(0f), info.ParticleSize, colliderResult, CollisionLayerMask);
 
-                    for (int j = 0; j < count; ++j) {
-                        var agent = colliderResult[j].GetComponent<Agent>();
-                        if (agent != null) {
-                            agent.Hit(this);
-                        }
-                        var wall = colliderResult[j].GetComponent<Wall>();
-                        if (wall != null) {
-                            // GameObject.Destroy(gameObject);
-                            p.velocity = Vector3.zero;
-                            p.position = Vector3.one * 10000f;
-                            info.Particles[i] = p;
-                        }
-                    }
+					for (int j = 0; j < count; ++j) {
+						var agent = colliderResult [j].GetComponent<Agent> ();
+						if (agent != null) {
+							agent.Hit (this);
+						}
+						var wall = colliderResult [j].GetComponent<Wall> ();
+						if (wall != null) {
+							// GameObject.Destroy(gameObject);
+							p.velocity = Vector3.zero;
+							p.position = Vector3.one * 10000f;
+							info.Particles [i] = p;
+						}
+						var powerUp = colliderResult [j].GetComponent<PowerUpScript> ();
+						if (powerUp != null) {
+							powerUp.Hit (this);
+						}
+					}
+
                     UnityEngine.Profiling.Profiler.EndSample();
                 }
             }
@@ -99,6 +108,7 @@ public class Signal : MonoBehaviour
     }
 
     public string GetCommand() {return info.Command;}
+	public Sender GetPlayerSender() {return info.playerSender;}
 	public int GetPlayerOriginId() {return info.PlayerOriginId;}
     public int GetSignalGroupId() {return info.SignalGroupId;}
     public Vector3 GetCommandDirection() {return info.CommandDirection;}
