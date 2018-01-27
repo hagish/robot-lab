@@ -5,13 +5,19 @@ using UnityEngine;
 
 public class Agent : MonoBehaviour {
 
-	public float commandDuration = 1.0f;
+	public float FullCommandDuration = 1.0f;
+
+    public float commandDuration = 1f;
 	public float movementSpeed = 0.05f;
 
 	private int currentSignalGroupId;
 	private float timeLastSignal;
 	private Vector3 dir;
 	private Rigidbody rb;
+
+    public Renderer Renderer;
+    public Material MaterialActive;
+    public Material MaterialInactive;
 
 	//public int playerGroupId;
 
@@ -22,13 +28,19 @@ public class Agent : MonoBehaviour {
 		timeLastSignal = -100.0f;
 		currentSignalGroupId = -1;
 		rb = GetComponent<Rigidbody> ();
+
+        if (Renderer == null) Renderer = GetComponentInChildren<Renderer>();
 	}
 
     public bool IsCommandActive() {
         return Time.time < timeLastSignal + commandDuration;
     }
 
-	void FixedUpdate ()
+    private void Update() {
+        if (Renderer != null) Renderer.sharedMaterial = IsCommandActive() ? MaterialActive : MaterialInactive;
+    }
+
+    void FixedUpdate ()
 	{
 		float currentTime = Time.time;
 		
@@ -49,9 +61,11 @@ public class Agent : MonoBehaviour {
 	}
 
 
-    void ProcessCommand(string command, Vector3 commandDirection)
-	{
+    void ProcessCommand(string command, Vector3 commandDirection, float strength)
+	{        
         if (IsCommandActive()) return;
+
+        commandDuration = FullCommandDuration * strength;
 
  		switch (command)
 		{
@@ -78,7 +92,11 @@ public class Agent : MonoBehaviour {
 			ChangeDirection (new Vector3 (0.0f, 0.0f, 1.0f));
 			break;
 
-		default:
+        case "Block":
+                ChangeDirection(Vector3.zero);
+            break;
+            
+            default:
 			//Debug.Log("Unrecognised command : " + command);
 			break;
 		}
@@ -94,6 +112,6 @@ public class Agent : MonoBehaviour {
         if (signal.GetSignalGroupId() == currentSignalGroupId) return;
 
 		currentSignalGroupId = signal.GetSignalGroupId ();
-        ProcessCommand(signal.GetCommand(), signal.GetCommandDirection());
+        ProcessCommand(signal.GetCommand(), signal.GetCommandDirection(), sigPart.Strength());
     }
 }

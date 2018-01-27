@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -44,5 +45,9 @@ public class SigPart : MonoBehaviour {
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.magenta;
         Gizmos.DrawSphere(transform.position, info.Radius);
+    }
+
+    public float Strength() {
+        return Mathf.Clamp01(Time.time - spawnTime / info.Signal.Lifetime);
     }
 }

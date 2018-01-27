@@ -152,4 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 933b83a0c91ca48f9a8018faedbeee7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerGroupId: 0
+  commandDuration: 1
+  movementSpeed: 0.05
+  Renderer: {fileID: 0}
+  MaterialActive: {fileID: 2100000, guid: 278c68a7463d340eb8e3386c5510e14c, type: 2}
+  MaterialInactive: {fileID: 2100000, guid: 4ecb019b401b7442c89344717897f0c7, type: 2}
