@@ -5,9 +5,6 @@ using XboxCtrlrInput;
 public class AvatarController : MonoBehaviour 
 {
     public float speed = 15.0F;
-    public float RotationSpeed = 3.0F;
-    public float jumpSpeed = 8.0F;
-    public float gravity = 20.0F;
 
     private Vector3 faceDirection = Vector3.forward;
     public XboxController XboxController;
@@ -74,11 +71,11 @@ public class AvatarController : MonoBehaviour
                 triggerAction(direction, "Right");
             }
 
-            if (XCI.GetAxis(XboxAxis.LeftTrigger, XboxController) > 0.6f)
+            if (XCI.GetAxis(XboxAxis.LeftTrigger, XboxController) > inputThreshold)
             {
                 triggerAction(direction, "Block");
             }
-            if (XCI.GetAxis(XboxAxis.RightTrigger, XboxController) > 0.6f)
+            if (XCI.GetAxis(XboxAxis.RightTrigger, XboxController) > inputThreshold)
             {
                 triggerAction(direction, "Move");
             }
