@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Aim : MonoBehaviour {
     public GameObject Root;
-
+    Vector3 lastDirection = Vector3.zero;
     public void SetDirection (Vector3 direction) {
-        if (direction.sqrMagnitude > 0f) {
-			Root.transform.rotation = Quaternion.LookRotation(direction);            
+        if(direction == Vector3.zero)
+        {
+           direction = lastDirection;
         }
+        Root.transform.rotation = Quaternion.LookRotation(direction);
+        lastDirection = direction;
     }
 }
