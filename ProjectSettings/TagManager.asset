@@ -14,12 +14,12 @@ TagManager:
   - UI
   - 
   - 
-  - Sender
-  - SigPart
+  - Player
+  - Signal
   - Agent
-  - 
-  - 
-  - 
+  - PlayerWall
+  - Wall
+  - SignalWall
   - 
   - 
   - 

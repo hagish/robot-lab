@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4062336386757616}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 143623445443800308}
   - component: {fileID: 114758165266749076}
   - component: {fileID: 114270191548997262}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,9 +55,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4589079408960780}
   - component: {fileID: 33293263855722746}
-  - component: {fileID: 136375647195311280}
   - component: {fileID: 23243851144354096}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +73,7 @@ GameObject:
   - component: {fileID: 4938127219010568}
   - component: {fileID: 33191483301165650}
   - component: {fileID: 23828827753445760}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AimMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +246,7 @@ MonoBehaviour:
   AngleInDegree: 90
   Speed: 4
   DeltaAngle: 10
-  ParticleRadius: 0.05
+  ParticleRadius: 0.2
   Cooldown: 1
 --- !u!114 &114902029140915176
 MonoBehaviour:
@@ -278,19 +277,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controllerId: J2
---- !u!136 &136375647195311280
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1252439241362444}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &143623445443800308
 CharacterController:
   m_ObjectHideFlags: 1
@@ -307,4 +293,4 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}

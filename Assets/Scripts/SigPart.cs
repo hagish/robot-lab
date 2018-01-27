@@ -8,6 +8,8 @@ public class SigPart : MonoBehaviour {
     private SigPartSystem.SignalParticleInfo info;
     private float spawnTime;
 
+    public LayerMask CollisionLayerMask;
+
     public Renderer Renderer;
 
     public void Init(SigPartSystem.SignalParticleInfo info) {
@@ -25,7 +27,7 @@ public class SigPart : MonoBehaviour {
         } else {
             var dirStep = info.Direction.normalized * info.Signal.Speed * Time.deltaTime;
             RaycastHit hitInfo;
-            var overlaps = Physics.OverlapSphere(transform.position, info.Radius);
+            var overlaps = Physics.OverlapSphere(transform.position, info.Radius, CollisionLayerMask);
             foreach (var collider in overlaps) {
                 var agent = collider.GetComponent<Agent>();
                 if (agent != null) {
