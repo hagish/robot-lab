@@ -33,6 +33,24 @@ public class Signal : MonoBehaviour
         ParticleSystem.GetParticles(info.Particles);
     }
 
+    private void ProcessCollider (Collider collider, SignalSystem.Info info, ParticleSystem.Particle p, int i) {
+        var agent = collider.GetComponent<Agent>();
+        if (agent != null) {
+            agent.Hit(this);
+        }
+        var wall = collider.GetComponent<Wall>();
+        if (wall != null) {
+            // GameObject.Destroy(gameObject);
+            p.velocity = Vector3.zero;
+            p.position = Vector3.one * 10000f;
+            info.Particles[i] = p;
+        }
+        var powerUp = collider.GetComponent<PowerUpScript>();
+        if (powerUp != null) {
+            powerUp.Hit(this);
+        }
+    }
+
     private void UpdateParticles() {
         if (info == null) return;
 
@@ -56,21 +74,7 @@ public class Signal : MonoBehaviour
                     Debug.DrawLine(p.position.SetY(0f), p.position.SetY(0f)+p.velocity.normalized * stepDist, Color.magenta, 1f, false);
 
                     for (int j = 0; j < count; ++j) {
-                        var agent = hitResult[j].collider.GetComponent<Agent>();
-                        if (agent != null) {
-                            agent.Hit(this);
-                        }
-                        var wall = hitResult[j].collider.GetComponent<Wall>();
-                        if (wall != null) {
-                            // GameObject.Destroy(gameObject);
-                            p.velocity = Vector3.zero;
-                            p.position = Vector3.one * 10000f;
-                            info.Particles[i] = p;
-                        }
-						var powerUp = hitResult [j].collider.GetComponent<PowerUpScript> ();
-						if (powerUp != null) {
-							powerUp.Hit (this);
-						}
+                        ProcessCollider(hitResult[j].collider, info, p, i);
                     }
                     UnityEngine.Profiling.Profiler.EndSample();
                 } else {
@@ -78,23 +82,8 @@ public class Signal : MonoBehaviour
                     int count = Physics.OverlapSphereNonAlloc(p.position.SetY(0f), info.ParticleSize, colliderResult, CollisionLayerMask);
 
 					for (int j = 0; j < count; ++j) {
-						var agent = colliderResult [j].GetComponent<Agent> ();
-						if (agent != null) {
-							agent.Hit (this);
-						}
-						var wall = colliderResult [j].GetComponent<Wall> ();
-						if (wall != null) {
-							// GameObject.Destroy(gameObject);
-							p.velocity = Vector3.zero;
-							p.position = Vector3.one * 10000f;
-							info.Particles [i] = p;
-						}
-						var powerUp = colliderResult [j].GetComponent<PowerUpScript> ();
-						if (powerUp != null) {
-							powerUp.Hit (this);
-						}
+                        ProcessCollider(colliderResult[j], info, p, j);
 					}
-
                     UnityEngine.Profiling.Profiler.EndSample();
                 }
             }
