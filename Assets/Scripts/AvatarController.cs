@@ -49,18 +49,24 @@ public class AvatarController : MonoBehaviour
         var direction = new Vector3(dxR, 0, dyR);
         if (Aim != null) Aim.SetDirection(direction);
 
-        if (triggerAction != null) {
-			if (Input.GetKey(KeyCode.Alpha1)) {
+       if (triggerAction != null) {
+            if (Input.GetKey(KeyCode.I)) {
                 triggerAction(direction, "Up");
 			}
-            if (Input.GetKey(KeyCode.Alpha2)) {
+            if (Input.GetKey(KeyCode.K)) {
                 triggerAction(direction, "Down");
             }
-            if (Input.GetKey(KeyCode.Alpha3)) {
+            if (Input.GetKey(KeyCode.J)) {
                 triggerAction(direction, "Left");
             }
-            if (Input.GetKey(KeyCode.Alpha4)) {
+            if (Input.GetKey(KeyCode.L)) {
                 triggerAction(direction, "Right");
+            }
+            if (Input.GetKey(KeyCode.Space)) {
+                triggerAction(direction, "Move");
+            }
+            if (Input.GetKey(KeyCode.B)) {
+                triggerAction(direction, "Block");
             }
     	}
             

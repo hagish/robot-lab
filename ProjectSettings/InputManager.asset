@@ -198,7 +198,7 @@ InputManager:
     axis: 1
     joyNum: 16
   - serializedVersion: 3
-    m_Name: Fire1
+    m_Name: J1Action1
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
