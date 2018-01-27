@@ -6,7 +6,7 @@ public class AvatarController : MonoBehaviour
 {
     public PlayerData playerInfo;
     public float speed = 15.0F;
-    public float RotationSpeed = 15.0F;
+    public float RotationSpeed = 3.0F;
     public float jumpSpeed = 8.0F;
     public float gravity = 20.0F;
     private Vector3 moveDirection = Vector3.zero;
@@ -21,7 +21,9 @@ public class AvatarController : MonoBehaviour
 
     public System.Action<Vector3, string> triggerAction;
 
-    private Vector3 lastMoveDirection;
+    public Vector3 lastMoveDirection;
+    public float maxMoveSpeed = 15.0f;
+    public Vector3 newPosition;
 
     private void Awake()
     {
@@ -30,23 +32,25 @@ public class AvatarController : MonoBehaviour
 
     void FixedUpdate() 
     {
-        CharacterController controller = GetComponent<CharacterController>();
-        moveDirection = Vector3.zero;
-
-    
-        float dx = XCI.GetAxis(XboxAxis.LeftStickX, XboxController);
-        float dy = XCI.GetAxis(XboxAxis.LeftStickY, XboxController);
-
-        moveDirection = new Vector3(dx, 0, dy);
-        if(moveDirection.magnitude > inputThreshold)
-        {
-            lastMoveDirection = moveDirection;
-            moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= speed;
-            controller.Move(moveDirection * Time.deltaTime);
-        }
+        Movement();
         SetRotation();
         CallTrigger(faceDirection);    
+    }
+
+    public void Movement()
+    {
+        // Left stick movement
+        Rigidbody controller = GetComponent<Rigidbody>();
+        newPosition = transform.position;
+        float axisX = XCI.GetAxis(XboxAxis.LeftStickX, XboxController);
+        float axisY = XCI.GetAxis(XboxAxis.LeftStickY, XboxController);
+        float newPosX = newPosition.x + (axisX * maxMoveSpeed * Time.deltaTime);
+        float newPosZ = newPosition.z + (axisY * maxMoveSpeed * Time.deltaTime);
+        newPosition = new Vector3(newPosX, transform.position.y, newPosZ);
+        controller.MovePosition(newPosition);
+       // transform.position = newPosition;
+        
+
     }
 
     public void CallTrigger(Vector3 direction)
@@ -82,15 +86,17 @@ public class AvatarController : MonoBehaviour
     }
     public void SetRotation()
     {
+      
         float dxR = XCI.GetAxis(XboxAxis.RightStickX, XboxController);
         float dyR = XCI.GetAxis(XboxAxis.RightStickY, XboxController);
 
         var direction = new Vector3(dxR, 0, dyR);
-
+     
         if(direction.magnitude > 0.2f )
             faceDirection = direction;
+           
 
-        if (Aim != null) Aim.SetDirection(faceDirection);
+      if (Aim != null) Aim.SetDirection(faceDirection);
 
     }
 }
