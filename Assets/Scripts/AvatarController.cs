@@ -7,7 +7,7 @@ public class AvatarController : MonoBehaviour
     private Vector3 faceDirection = Vector3.forward;
     public XboxController XboxController;
 
-    public Aim Aim;
+    public Aim aim;
 
     [Range(0,1)]
     public float inputThreshold = 0.5f;
@@ -22,7 +22,7 @@ public class AvatarController : MonoBehaviour
 
     private void Awake()
     {
-        Aim = GetComponent<Aim>();
+        aim = GetComponent<Aim>();
     }
 
     private void Start() {
@@ -82,6 +82,15 @@ public class AvatarController : MonoBehaviour
             {
                 triggerAction(direction, "Move");
             }
+
+			if (InputManager.Get(XboxController).GetButton(XboxButton.LeftBumper))
+			{
+				aim.DecreaseConeAngle();
+			}
+			if (InputManager.Get(XboxController).GetButton(XboxButton.RightBumper))
+			{
+				aim.IncreaseConeAngle();
+			}
     	}
     }
 
@@ -95,8 +104,7 @@ public class AvatarController : MonoBehaviour
      
         if(direction.magnitude > 0.2f )
             faceDirection = direction;
-           
 
-      if (Aim != null) Aim.SetDirection(faceDirection);
+      if (aim != null) aim.SetDirection(faceDirection);
     }
 }

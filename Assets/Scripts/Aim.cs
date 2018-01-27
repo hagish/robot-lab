@@ -23,6 +23,7 @@ public class Aim : MonoBehaviour
 	{
 		ConeFraction = InitConeFraction;
 		AngleInDegrees = Mathf.Lerp (MinAngleInDegrees, MaxAngleInDegrees, ConeFraction);
+		Debug.Log ("Set cone angle : " + ConeFraction + "  " + AngleInDegrees);
 	}
 
 	void Update()
@@ -39,12 +40,18 @@ public class Aim : MonoBehaviour
 
 	public void IncreaseConeAngle()
 	{
-		ConeFraction = Mathf.Min (MaxAngleInDegrees, ConeFraction + Time.deltaTime * OpeningSpeed);
+		ConeFraction += (Time.deltaTime * OpeningSpeed);
+		ConeFraction = Mathf.Min (1.0f, ConeFraction);
+		AngleInDegrees = Mathf.Lerp (MinAngleInDegrees, MaxAngleInDegrees, ConeFraction);
+		Debug.Log ("Increased cone angle : " + ConeFraction + "  " + AngleInDegrees + "  " + MinAngleInDegrees + "  " + MaxAngleInDegrees);
 	}
 
 	public void DecreaseConeAngle()
 	{
-		ConeFraction = Mathf.Max (MinAngleInDegrees, ConeFraction + Time.deltaTime * OpeningSpeed);
+		ConeFraction -= (Time.deltaTime * OpeningSpeed);
+		ConeFraction = Mathf.Max (0.0f, ConeFraction);
+		AngleInDegrees = Mathf.Lerp (MinAngleInDegrees, MaxAngleInDegrees, ConeFraction);
+		Debug.Log ("Decreased cone angle : " + ConeFraction + "  " + AngleInDegrees + "  " + MinAngleInDegrees + "  " + MaxAngleInDegrees);
 	}
 
 	public void SetDirection (Vector3 newDirection)
