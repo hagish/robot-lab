@@ -14,6 +14,9 @@ ModelImporter:
     100012: RightWall
     100014: TopWall
     100016: ParabolicAntenna
+    100018: NurbsPath
+    100020: Point
+    100022: PowerUpLightning
     400000: BottomWall
     400002: Camera
     400004: Ground
@@ -23,28 +26,39 @@ ModelImporter:
     400012: RightWall
     400014: TopWall
     400016: ParabolicAntenna
+    400018: NurbsPath
+    400020: Point
+    400022: PowerUpLightning
     2000000: Camera
     2100000: No Name
     2100002: Material
+    2100004: Material.006
     2300000: BottomWall
     2300002: Ground
     2300004: LeftWall
     2300006: RightWall
     2300008: TopWall
     2300010: ParabolicAntenna
+    2300012: NurbsPath
+    2300014: PowerUpLightning
     3300000: BottomWall
     3300002: Ground
     3300004: LeftWall
     3300006: RightWall
     3300008: TopWall
     3300010: ParabolicAntenna
+    3300012: NurbsPath
+    3300014: PowerUpLightning
     4300000: BottomWall
     4300002: TopWall
     4300004: RightWall
     4300006: LeftWall
     4300008: Ground
     4300010: ParabolicAntenna
+    4300012: NurbsPath
+    4300014: PowerUpLightning
     10800000: Lamp
+    10800002: Point
   externalObjects: {}
   materials:
     importMaterials: 1
