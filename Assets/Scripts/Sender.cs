@@ -8,18 +8,25 @@ public class Sender : MonoBehaviour {
 
     public float Timeout = 1f;
     public float Lifetime = 1f;
-    public Vector3 Direction;
-    public float AngleInDegree = 180f;
-    public float Speed = 1f;
-
+	public float MinAngleInDegrees = 10.0f;
+	public float MaxAngleInDegrees = 180.0f;
+	public float MaxSpeed = 4.0f;
+	public float MinSpeed = 0.5f;
     public float DeltaAngle = 1f;
     public float ParticleRadius = 0.5f;
 	public float SpawnDistance = 0.5f;
 
     public float Energy;
     public float EnergyReg;
+	public Vector3 Direction;
 
 	private float nextTriggerTime;
+	private Aim aim;
+
+	void Awake()
+	{
+		aim = GetComponent<Aim> ();
+	}
 
     [System.Serializable]
     public class Entry {
@@ -56,6 +63,9 @@ public class Sender : MonoBehaviour {
         float cooldown = 0f;
         float cost = 0f;
 
+		float ConeFraction = aim.GetConeFraction ();
+		float AngleInDegree = aim.GetAngleInDegrees ();
+		float Speed = Mathf.Lerp (MaxSpeed, MaxSpeed, ConeFraction);
 
         foreach (var it in Entries) {
             if (it.Command == command) {
