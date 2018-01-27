@@ -38,6 +38,8 @@ GameObject:
   - component: {fileID: 4655615138331042}
   - component: {fileID: 33966657203106176}
   - component: {fileID: 23054658165207428}
+  - component: {fileID: 320626140237974042}
+  - component: {fileID: 95976672852531104}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -113,6 +115,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1743803403622428}
   m_Mesh: {fileID: 4300014, guid: a902b95430868428d9e9a0681bf57fdd, type: 3}
+--- !u!95 &95976672852531104
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1743803403622428}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5de01ca0e2a0c463b9690127be20f18f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114618622931527660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,3 +158,23 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.25, z: 0}
+--- !u!320 &320626140237974042
+PlayableDirector:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1743803403622428}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 25742e4c50da0455b807398763f410d4, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 1
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 114618687759731218, guid: 25742e4c50da0455b807398763f410d4, type: 2}
+    value: {fileID: 1743803403622428}
+  - key: {fileID: 0}
+    value: {fileID: 1743803403622428}
+  m_ExposedReferences:
+    m_References: []
