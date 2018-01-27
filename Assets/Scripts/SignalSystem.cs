@@ -34,6 +34,7 @@ public class SignalSystem : MonoBehaviour {
         public float Speed;
         public float Lifetime;
         public Color Color;
+        public Material Material;
         public Vector3 CommandDirection;
         public String Command;
         public int PlayerOriginId;
@@ -67,14 +68,15 @@ public class SignalSystem : MonoBehaviour {
         public float Radius;
     }
 
-    public void Spawn(Info info, float deltaAngle) {
+    public void Spawn(Info info, float deltaAngle, Color color) {
         var id = nextSignalId;
         nextSignalId += 1;
 
         info.SignalGroupId = id;
         foreach (var it in Entries) {
             if (it.Command == info.Command) {
-                info.Color = it.Color;
+                info.Color = color;
+                info.Material = it.Material;
             }
         }
         info.Source += Offset;
@@ -112,6 +114,7 @@ public class SignalSystem : MonoBehaviour {
             info.Particles[i] = p;
         }
 
+        var main = signal.ParticleSystem.GetComponent<ParticleSystemRenderer>().sharedMaterial = info.Material;
         signal.ParticleSystem.SetParticles(info.Particles, info.Particles.Length);
         signal.ParticleSystem.Play();
     }

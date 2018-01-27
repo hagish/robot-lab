@@ -17,6 +17,7 @@ ModelImporter:
     100018: NurbsPath
     100020: Point
     100022: PowerUpLightning
+    100024: Robot
     400000: BottomWall
     400002: Camera
     400004: Ground
@@ -29,6 +30,7 @@ ModelImporter:
     400018: NurbsPath
     400020: Point
     400022: PowerUpLightning
+    400024: Robot
     2000000: Camera
     2100000: No Name
     2100002: Material
@@ -41,6 +43,7 @@ ModelImporter:
     2300010: ParabolicAntenna
     2300012: NurbsPath
     2300014: PowerUpLightning
+    2300016: Robot
     3300000: BottomWall
     3300002: Ground
     3300004: LeftWall
@@ -49,6 +52,7 @@ ModelImporter:
     3300010: ParabolicAntenna
     3300012: NurbsPath
     3300014: PowerUpLightning
+    3300016: Robot
     4300000: BottomWall
     4300002: TopWall
     4300004: RightWall
@@ -57,6 +61,7 @@ ModelImporter:
     4300010: ParabolicAntenna
     4300012: NurbsPath
     4300014: PowerUpLightning
+    4300016: Robot
     10800000: Lamp
     10800002: Point
   externalObjects: {}

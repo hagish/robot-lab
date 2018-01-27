@@ -21,6 +21,7 @@ public class PowerUpScript : MonoBehaviour
     }
 
     private void Process(Sender sender) {
+        if (sender == null) return;
         sender.AddEnergyBoost(EnergyBoost);
         Destroy(transform.gameObject);
     }
