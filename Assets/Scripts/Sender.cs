@@ -25,6 +25,8 @@ public class Sender : MonoBehaviour {
     public float coolDownWindow = 2.0f;
     public float waitTime = 0.2f;
 
+    public Color Color;
+
     private float nextTriggerTime;
 	private Aim aim;
 	private AudioSource audioSource;
@@ -85,7 +87,7 @@ public class Sender : MonoBehaviour {
                 speedFactor = it.SpeedFactor;
             }
         }
-		
+
 		if (cost > Energy) {
 			if (NoPowerAudioClip != null) {
 				audioSource.clip = NoPowerAudioClip;
@@ -112,7 +114,7 @@ public class Sender : MonoBehaviour {
 				CommandDirection = direction.normalized,
 				Command = command,
 				playerSender = this
-			}, DeltaAngle);
+			}, DeltaAngle, Color);
 		}
     }
 
