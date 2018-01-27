@@ -40,7 +40,7 @@ public class SignalSystem : MonoBehaviour {
 		public float SpawnDistance;
         public float ParticleSize;
         public float Cost;
-        public float warmupTime = 0.2f;
+        public float warmupDistance = 0.5f;
 
         public ParticleSystem.Particle[] Particles;
 

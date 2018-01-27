@@ -97,6 +97,8 @@ public class Agent : MonoBehaviour {
 
         commandDuration = FullCommandDuration * strength;
 
+        // Debug.LogFormat("XXX {0} {1} {2}", command, commandDirection, strength, commandDuration);
+
  		switch (command)
 		{
             case "Move":

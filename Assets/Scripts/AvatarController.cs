@@ -80,7 +80,7 @@ public class AvatarController : MonoBehaviour
             }
             if (InputManager.Get(XboxController).GetAxis(XboxAxis.RightTrigger) > inputThreshold)
             {
-                //triggerAction(direction, "Move");
+                triggerAction(direction, "Block");
             }
 
 			if (InputManager.Get(XboxController).GetButton(XboxButton.LeftBumper))
