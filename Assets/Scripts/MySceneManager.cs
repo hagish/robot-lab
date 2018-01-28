@@ -42,6 +42,8 @@ public class MySceneManager : MonoBehaviour {
             SceneManager.LoadScene("_level1", LoadSceneMode.Single);
         } else if (Input.GetKeyDown(KeyCode.F3)) {
             SceneManager.LoadScene("_level2", LoadSceneMode.Single);
-        }
+	    } else if (Input.GetKeyDown(KeyCode.C)) {
+		    SceneManager.LoadScene("_controls", LoadSceneMode.Single);
+	    }
     }
 }
