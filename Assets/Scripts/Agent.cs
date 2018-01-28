@@ -92,7 +92,7 @@ public class Agent : MonoBehaviour {
 
         if (!IsCommandActive() && CommandRenderer != null) CommandRenderer.gameObject.SetActive(false);
 
-        if (dir.sqrMagnitude > 0.1f) {
+        if (Body != null && dir.sqrMagnitude > 0.1f) {
 			Body.transform.rotation = Quaternion.RotateTowards(Body.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * BodyRotateSpeed);            
         }
     }

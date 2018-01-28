@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class MySceneManager : MonoBehaviour {
     public static MySceneManager Instance;
+
+    public AudioMixer AudioMixer;
 
 	public AudioClip mainMenuMusic;
 	private AudioSource audioSource;
@@ -28,6 +31,10 @@ public class MySceneManager : MonoBehaviour {
 			audioSource.Play ();
 		}
 	}
+
+    public void TransitionMixer(string name) {
+        AudioMixer.FindSnapshot(name).TransitionTo(1f);
+    }
 
     public void GotoMenu() {
         SceneManager.LoadScene("_menu", LoadSceneMode.Single);
