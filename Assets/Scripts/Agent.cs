@@ -29,8 +29,8 @@ public class Agent : MonoBehaviour {
 
     public Renderer Renderer;
     public Material MaterialActive;
-
     public Material MaterialInactive;
+    public Material MaterialAgentBlocked;
 
     public Material MaterialRight;
     public Material MaterialLeft;
@@ -83,7 +83,7 @@ public class Agent : MonoBehaviour {
             Renderer.sharedMaterial = isCommandActive ? MaterialInactive : MaterialActive;
             if(isCommandActive && lastProcessedCommand == "Block")
             {
-                Renderer.sharedMaterial = MaterialBlock;
+                Renderer.sharedMaterial = MaterialAgentBlocked;
             }
         }
            
