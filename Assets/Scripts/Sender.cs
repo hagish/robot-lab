@@ -114,7 +114,7 @@ public class Sender : MonoBehaviour {
 				CommandDirection = direction.normalized,
 				Command = command,
 				playerSender = this
-			}, DeltaAngle, Color);
+			}, DeltaAngle, Color, this);
 		}
     }
 

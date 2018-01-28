@@ -16,15 +16,19 @@ public class MySceneManager : MonoBehaviour {
         GameObject.DontDestroyOnLoad(gameObject);
     }
 
+    public void GotoMenu() {
+        SceneManager.LoadScene("_menu", LoadSceneMode.Single);
+    }
+
     void Update () {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            SceneManager.LoadScene("Scenes/_menu", LoadSceneMode.Single);
+            GotoMenu();
         } else if (Input.GetKeyDown(KeyCode.F1)) {
-            SceneManager.LoadScene("Scenes/_level0", LoadSceneMode.Single);
+            SceneManager.LoadScene("_level0", LoadSceneMode.Single);
         } else if (Input.GetKeyDown(KeyCode.F2)) {
-            SceneManager.LoadScene("_Scenes/level1", LoadSceneMode.Single);
+            SceneManager.LoadScene("_level1", LoadSceneMode.Single);
         } else if (Input.GetKeyDown(KeyCode.F3)) {
-            SceneManager.LoadScene("_Scenes/level2", LoadSceneMode.Single);
+            SceneManager.LoadScene("_level2", LoadSceneMode.Single);
         }
     }
 }
