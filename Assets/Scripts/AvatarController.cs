@@ -9,17 +9,18 @@ public class AvatarController : MonoBehaviour
 
     public Aim aim;
 
+    public Animator CommandAnimator;
+
     [Range(0, 1)]
     public float inputThreshold = 0.5f;
 
     public System.Action<Vector3, string> triggerAction;
-    private List<string> ActionCommands;
+    private List<string> ActionCommands = new List<string>(){"Up"};
 
     public Vector3 lastMoveDirection;
     public float maxMoveSpeed = 15.0f;
     public Vector3 newPosition;
 
-    private Vector3 lastNonZeroDirection;
     private int commandCounter = 19010;
     private bool callExecuteAction = false;
     public string _selectedCommand = "Up";
@@ -81,32 +82,21 @@ public class AvatarController : MonoBehaviour
         // transform.position = newPosition;
     }
 
+    private void SetCommand (string command) {
+        if (_selectedCommand != command && !string.IsNullOrEmpty(command)) {
+            _selectedCommand = command;
+            AddCommand(command);
+            CommandAnimator.SetTrigger("Wiggle");
+        }
+    }
+
     public void CallTrigger(Vector3 direction)
     {
         if (triggerAction != null)
         {
-            string command = GetCommandFromBummer();
-            if (!string.IsNullOrEmpty(command))
-            {
-                _selectedCommand = command;
-                AddCommand(command);
-            }
-
-            command = GetCommandFromButtons();
-            if (!string.IsNullOrEmpty(command))
-            {
-                _selectedCommand = command;
-                AddCommand(command);
-            }
-
-            command = GetCommandFromDPad();
-            if (!string.IsNullOrEmpty(command))
-            {
-                _selectedCommand = command;
-                AddCommand(command);
-            }
-
-
+            SetCommand(GetCommandFromBummer());
+            SetCommand(GetCommandFromButtons());
+            SetCommand(GetCommandFromDPad());
 
             if (InputManager.Get(XboxController).GetAxis(XboxAxis.LeftTrigger) > inputThreshold)
             {
