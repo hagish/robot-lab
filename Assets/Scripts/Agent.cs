@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Agent : MonoBehaviour {
 
+
+    public ParticleSystem CuddleParticleSystem
+;
     public float FullCommandDuration = 1.0f;
 
     public float commandDuration = 1f;
@@ -179,6 +182,13 @@ public class Agent : MonoBehaviour {
             // ignore
         } else {
             ProcessCommand(signal.GetCommand(), signal.GetCommandDirection(), signal.Strength(), signal.Sender);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        var agent = collision.gameObject.GetComponentInParent<Agent>();
+        if (agent != null && CuddleParticleSystem != null) {
+            CuddleParticleSystem.Play();
         }
     }
 }
