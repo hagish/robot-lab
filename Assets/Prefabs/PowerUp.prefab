@@ -160,14 +160,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 933b83a0c91ca48f9a8018faedbeee7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CuddleParticleSystem: {fileID: 0}
+  CuddleSound: {fileID: 0}
   FullCommandDuration: 1
   commandDuration: 1
   movementSpeed: 0.05
+  CommandRenderer: {fileID: 0}
   IsToZeroOnDeath: 0
   Renderer: {fileID: 0}
   MaterialActive: {fileID: 2100000, guid: 18a704f27f7f441a99dc09b9d789b7ed, type: 2}
   MaterialInactive: {fileID: 2100000, guid: 18a704f27f7f441a99dc09b9d789b7ed, type: 2}
-  MaxCommandQueueLength: 0
+  MaterialRight: {fileID: 0}
+  MaterialLeft: {fileID: 0}
+  MaterialUp: {fileID: 0}
+  MaterialDown: {fileID: 0}
+  MaterialBlock: {fileID: 0}
+  audioClips: []
 --- !u!114 &114618622931527660
 MonoBehaviour:
   m_ObjectHideFlags: 1
