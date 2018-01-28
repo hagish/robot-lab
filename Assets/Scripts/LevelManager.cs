@@ -14,7 +14,10 @@ public class LevelManager : MonoBehaviour {
         return ScoreLeft > 0;
     }
 
-	void Start () {
+    IEnumerator Start () {
+        // stupid hack to wait for ui
+        yield return new WaitForSeconds(1);
+
         UKMessenger.Broadcast<int>("score_left_set", ScoreLeft);
 
         UKMessenger.AddListener<int, int>("score_inc", gameObject, (playerId, inc) => {
