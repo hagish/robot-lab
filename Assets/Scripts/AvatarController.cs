@@ -8,6 +8,8 @@ public class AvatarController : MonoBehaviour
     public XboxController XboxController;
 
     public Aim aim;
+	private AudioSource audioSource;
+	public AudioClip changeDirectionClip;
 
     public Animator CommandAnimator;
 
@@ -41,6 +43,7 @@ public class AvatarController : MonoBehaviour
     private void Awake()
     {
         aim = GetComponent<Aim>();
+		audioSource = GetComponent<AudioSource> ();
     }
 
     private void Start()
@@ -90,6 +93,10 @@ public class AvatarController : MonoBehaviour
             _selectedCommand = command;
             AddCommand(command);
             CommandAnimator.SetTrigger("Wiggle");
+			if (changeDirectionClip != null) {
+				audioSource.clip = changeDirectionClip;
+				audioSource.Play ();
+			}
         }
     }
 

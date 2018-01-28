@@ -877,6 +877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   XboxController: 1
   aim: {fileID: 0}
+  changeDirectionClip: {fileID: 8300000, guid: c509cbdfa80cb44f09badb4b4d707aa6, type: 3}
   CommandAnimator: {fileID: 95323115156929592}
   inputThreshold: 0.5
   lastMoveDirection: {x: 0, y: 0, z: 0}
