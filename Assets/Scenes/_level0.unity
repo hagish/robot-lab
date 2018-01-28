@@ -1863,16 +1863,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 114070409095002066, guid: 31ce9df9c60654eb5bf0cc2ecbbdcf7b,
-        type: 2}
-      propertyPath: IsToZeroOnDeath
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114070409095002066, guid: 31ce9df9c60654eb5bf0cc2ecbbdcf7b,
-        type: 2}
-      propertyPath: MaxCommandQueueLength
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31ce9df9c60654eb5bf0cc2ecbbdcf7b, type: 2}
   m_IsPrefabParent: 0
