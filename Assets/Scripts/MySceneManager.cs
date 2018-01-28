@@ -16,9 +16,13 @@ public class MySceneManager : MonoBehaviour {
         GameObject.DontDestroyOnLoad(gameObject);
     }
 
+    public void GotoMenu() {
+        SceneManager.LoadScene("_menu", LoadSceneMode.Single);
+    }
+
     void Update () {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            SceneManager.LoadScene("_menu", LoadSceneMode.Single);
+            GotoMenu();
         } else if (Input.GetKeyDown(KeyCode.F1)) {
             SceneManager.LoadScene("_level0", LoadSceneMode.Single);
         } else if (Input.GetKeyDown(KeyCode.F2)) {

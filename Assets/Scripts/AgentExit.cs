@@ -17,7 +17,8 @@ public class AgentExit : MonoBehaviour {
             {
 				agent.ExitReached(this);
                 scored += 1;
-                UKMessenger.Broadcast<int, int>("score_set", playerExitId, scored);
+                UKMessenger.Broadcast<int, int>("score_inc", playerExitId, 1);
+                //UKMessenger.Broadcast<int, int>("score_set", playerExitId, scored);
 			}
 		}
 	}
