@@ -3,9 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
-    public static LevelManager Instance;
+    
+	public static LevelManager Instance;
+
+	private AudioSource audioSource;
+	public AudioClip bgMusicClip;
+	public AudioClip crowdCheerClip;
+
     private void Awake() {
         Instance = this;
+		audioSource = GetComponent<AudioSource> ();
     }
 
     public int ScoreLeft;
@@ -23,10 +30,16 @@ public class LevelManager : MonoBehaviour {
         UKMessenger.AddListener<int, int>("score_inc", gameObject, (playerId, inc) => {
             ScoreLeft -= inc;
 
+			if (crowdCheerClip != null) {
+    			audioSource.clip = crowdCheerClip;
+				audioSource.Play();
+			}
+
             if (ScoreLeft <= 0) {
                 StartCoroutine(CoEndGame());
             }
        });
+
 	}
 
     IEnumerator CoEndGame() {
