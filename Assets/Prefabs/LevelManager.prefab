@@ -134,4 +134,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgMusicClip: {fileID: 0}
   crowdCheerClip: {fileID: 8300000, guid: 49b3a5ccb30894c70a09660c6cf427dd, type: 3}
+  endLevelClip: {fileID: 8300000, guid: 184b04ea0adc54cb881b9c3d853405b5, type: 3}
   ScoreLeft: 10

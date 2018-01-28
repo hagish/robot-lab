@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour {
 	private AudioSource audioSource;
 	public AudioClip bgMusicClip;
 	public AudioClip crowdCheerClip;
+	public AudioClip endLevelClip;
 
     private void Awake() {
         Instance = this;
@@ -43,6 +44,12 @@ public class LevelManager : MonoBehaviour {
 	}
 
     IEnumerator CoEndGame() {
+
+		if (endLevelClip != null) {
+			audioSource.clip = endLevelClip;
+			audioSource.Play();
+		}
+
         int score1 = 0;
         int score2 = 0;
         foreach (var exit in GameObject.FindObjectsOfType<AgentExit>()) {
