@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: 79906d88248154dea93bc7f622a529f4
+timeCreated: 1517141741
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: ArmL
+    100002: ArmL_end
+    100004: ArmR
+    100006: ArmR_end
+    100008: Body
+    100010: Bone
+    100012: BottomWall
+    100014: Camera
+    100016: Ground
+    100018: Lamp
+    100020: LeftWall
+    100022: NurbsPath
+    100024: ParabolicAntenna
+    100026: Point
+    100028: PowerUpLightning
+    100030: RightWall
+    100032: Robot
+    100034: //RootNode
+    100036: RobotRig
+    100038: TopWall
+    100040: WheelL
+    100042: WheelL_end
+    100044: WheelR
+    100046: WheelR_end
+    400000: ArmL
+    400002: ArmL_end
+    400004: ArmR
+    400006: ArmR_end
+    400008: Body
+    400010: Bone
+    400012: BottomWall
+    400014: Camera
+    400016: Ground
+    400018: Lamp
+    400020: LeftWall
+    400022: NurbsPath
+    400024: ParabolicAntenna
+    400026: Point
+    400028: PowerUpLightning
+    400030: RightWall
+    400032: Robot
+    400034: //RootNode
+    400036: RobotRig
+    400038: TopWall
+    400040: WheelL
+    400042: WheelL_end
+    400044: WheelR
+    400046: WheelR_end
+    2000000: Camera
+    2100000: No Name
+    2100002: Material.006
+    2100004: Material
+    2300000: BottomWall
+    2300002: Ground
+    2300004: LeftWall
+    2300006: NurbsPath
+    2300008: ParabolicAntenna
+    2300010: PowerUpLightning
+    2300012: RightWall
+    2300014: TopWall
+    3300000: BottomWall
+    3300002: Ground
+    3300004: LeftWall
+    3300006: NurbsPath
+    3300008: ParabolicAntenna
+    3300010: PowerUpLightning
+    3300012: RightWall
+    3300014: TopWall
+    4300000: Robot
+    4300002: NurbsPath
+    4300004: PowerUpLightning
+    4300006: ParabolicAntenna
+    4300008: BottomWall
+    4300010: TopWall
+    4300012: RightWall
+    4300014: LeftWall
+    4300016: Ground
+    9500000: //RootNode
+    10800000: Lamp
+    10800002: Point
+    13700000: Robot
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

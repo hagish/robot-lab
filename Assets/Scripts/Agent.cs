@@ -6,6 +6,7 @@ using UnityEngine;
 public class Agent : MonoBehaviour {
     public GameObject Body;
 
+    public Animator BodyAnimator;
     public ParticleSystem CuddleParticleSystem;
     public AudioSource CuddleSound;
 
@@ -87,11 +88,16 @@ public class Agent : MonoBehaviour {
 
         rb.velocity = Vector3.zero;
 
+        var isMoving = false;
+
         if (IsCommandActive()) {
             //transform.position += movementSpeed * dir;
             rb.MovePosition(transform.position + movementSpeed * dir);
             //Debug.Log ("Moving agent; dir : " + transform.position);
+            isMoving = true;
         }
+
+        BodyAnimator.SetBool("Moving", isMoving);
     }
 
 
