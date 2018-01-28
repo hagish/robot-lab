@@ -66,10 +66,36 @@ public class AvatarController : MonoBehaviour
     private void Update() {
         SetRotation();
         CallTrigger(faceDirection);
-
+        XboxController newController = XboxController;
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            XboxController = XboxController == XboxController.First ? XboxController.Second : XboxController.First;
+            switch(XboxController)
+            {
+                case XboxController.First:
+                    newController = XboxController.Second;
+                   
+                    break;
+
+                case XboxController.Second:
+                    newController = XboxController.Third;
+                   
+                    break;
+
+                case XboxController.Third:
+                    newController = XboxController.Fourth;
+                    
+                    break;
+
+                case XboxController.Fourth:
+                    newController = XboxController.First;
+                    
+                    break;
+
+
+            }
+            Debug.Log("Setting player" + newController);
+            XboxController = newController;
+           // XboxController = XboxController == XboxController.First ? XboxController.Second : XboxController.First;
         }
     }
 

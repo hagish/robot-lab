@@ -121,6 +121,10 @@ public class InputSourceChain : InputSource {
 public static class InputManager {
     public static InputSource _Xbox1 = new InputSourceXbox(XboxController.First);
     public static InputSource _Xbox2 = new InputSourceXbox(XboxController.Second);
+    public static InputSource _Xbox3 = new InputSourceXbox(XboxController.Third);
+    public static InputSource _Xbox4 = new InputSourceXbox(XboxController.Fourth);
+
+
     public static InputSource _Key1 = new InputSourceKeyboard()
                 .Assign(XboxAxis.LeftStickX, KeyCode.A, KeyCode.D)
                 .Assign(XboxAxis.LeftStickY, KeyCode.S, KeyCode.W)
@@ -137,17 +141,24 @@ public static class InputManager {
 
     public static InputSource Player1 = new InputSourceChain(_Xbox1, _Key1);
     public static InputSource Player2 = new InputSourceChain(_Xbox2);
+    public static InputSource Player3 = new InputSourceChain(_Xbox3);
+    public static InputSource Player4 = new InputSourceChain(_Xbox4);
 
 
     public static InputSource Get(int playerId) {
         if (playerId == 1) return Player1;
         else if (playerId == 2) return Player2;
+        else if (playerId == 3) return Player3;
+        else if (playerId == 4) return Player4;
         else return _Nop;
     }
 
     public static InputSource Get(XboxController xboxController) {
         if (xboxController == XboxController.First) return Get(1);
         else if (xboxController == XboxController.Second) return Get(2);
+        else if (xboxController == XboxController.Third) return Get(3);
+        else if (xboxController == XboxController.Fourth) return Get(4);
+
         else return Get(0);
     }
 }
