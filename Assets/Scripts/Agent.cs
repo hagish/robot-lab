@@ -30,8 +30,8 @@ public class Agent : MonoBehaviour {
 
     public Renderer Renderer;
     public Material MaterialActive;
-
     public Material MaterialInactive;
+    public Material MaterialAgentBlocked;
 
     public Material MaterialRight;
     public Material MaterialLeft;
@@ -39,6 +39,9 @@ public class Agent : MonoBehaviour {
     public Material MaterialDown;
     public Material MaterialBlock;
 	public AudioClip[] audioClips;
+
+    //catch the command
+    public string lastProcessedCommand = "";
 
     public struct CommandEntry {
         public string Command;
@@ -75,7 +78,18 @@ public class Agent : MonoBehaviour {
     }
 
     private void Update() {
-        if (Renderer != null) Renderer.sharedMaterial = IsCommandActive() ? MaterialInactive : MaterialActive;
+        if (Renderer != null)
+        {
+            bool isCommandActive = IsCommandActive();
+            Renderer.sharedMaterial = isCommandActive ? MaterialInactive : MaterialActive;
+            if(isCommandActive && lastProcessedCommand == "Block")
+            {
+                Renderer.sharedMaterial = MaterialAgentBlocked;
+            }
+        }
+           
+            
+
         if (!IsCommandActive() && CommandRenderer != null) CommandRenderer.gameObject.SetActive(false);
 
         if (dir.sqrMagnitude > 0.1f) {
@@ -97,7 +111,7 @@ public class Agent : MonoBehaviour {
             isMoving = true;
         }
 
-        BodyAnimator.SetBool("Moving", isMoving);
+        if (BodyAnimator != null) BodyAnimator.SetBool("Moving", isMoving);
     }
 
 
@@ -136,6 +150,7 @@ public class Agent : MonoBehaviour {
                 CommandRenderer.gameObject.SetActive(false);
                 break;
         }
+        if (!string.IsNullOrEmpty(command)) lastProcessedCommand = command;
 
 		CommandRenderer.material.SetColor("_Color", color);
     }

@@ -7,6 +7,7 @@ public class Sender : MonoBehaviour {
     public int PlayerId;
 	public AudioClip SendSignalAudioClip;
 	public AudioClip NoPowerAudioClip;
+	public AudioClip PowerUpClip;
 
     public float Timeout = 1f;
     public float Lifetime = 1f;
@@ -132,6 +133,10 @@ public class Sender : MonoBehaviour {
 
 	public void AddEnergyBoost(float energyBoost)
 	{
+		if (PowerUpClip != null) {
+			audioSource.clip = PowerUpClip;
+			audioSource.Play ();
+		}
 		Energy += energyBoost;
 		Energy = Mathf.Clamp01(Energy);
 	}

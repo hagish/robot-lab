@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class MySceneManager : MonoBehaviour {
     public static MySceneManager Instance;
 
+	public AudioClip mainMenuMusic;
+	private AudioSource audioSource;
+
     private void Awake() {
         if (Instance != null && Instance != this) {
             GameObject.Destroy(gameObject);
@@ -14,7 +17,17 @@ public class MySceneManager : MonoBehaviour {
         }
 
         GameObject.DontDestroyOnLoad(gameObject);
+
+		audioSource = GetComponent<AudioSource> ();
     }
+
+	void Start()
+	{
+		if (mainMenuMusic != null) {
+			audioSource.clip = mainMenuMusic;
+			audioSource.Play ();
+		}
+	}
 
     public void GotoMenu() {
         SceneManager.LoadScene("_menu", LoadSceneMode.Single);
