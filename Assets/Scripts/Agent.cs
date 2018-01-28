@@ -14,10 +14,12 @@ public class Agent : MonoBehaviour {
 
     public bool IsToZeroOnDeath;
 
+	private int numClips;
     private int currentSignalGroupId;
     private float timeLastSignal;
     private Vector3 dir;
     private Rigidbody rb;
+	private AudioSource audioSource;
 
     public Renderer Renderer;
     public Material MaterialActive;
@@ -29,6 +31,7 @@ public class Agent : MonoBehaviour {
     public Material MaterialUp;
     public Material MaterialDown;
     public Material MaterialBlock;
+	public AudioClip[] audioClips;
 
     public struct CommandEntry {
         public string Command;
@@ -54,6 +57,8 @@ public class Agent : MonoBehaviour {
     void Awake() {
         Reset();
         rb = GetComponent<Rigidbody>();
+		audioSource = GetComponent<AudioSource> ();
+		numClips = audioClips.Length;
 
         if (Renderer == null) Renderer = GetComponentInChildren<Renderer>();
     }
@@ -83,6 +88,11 @@ public class Agent : MonoBehaviour {
     void ChangeDirection(Vector3 newDir) {
         dir = newDir;
         timeLastSignal = Time.time;
+		if (numClips > 0) {
+			int clipId = UnityEngine.Random.Range (0, numClips - 1);
+			audioSource.clip = audioClips [clipId];
+			audioSource.Play ();
+		}
     }
 
     void ShowCommand(string command, Color color) {
