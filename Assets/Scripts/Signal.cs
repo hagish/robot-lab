@@ -5,21 +5,24 @@ using UnityEngine;
 
 public class Signal : MonoBehaviour
 {
-    SignalSystem.Info info; 
+    public SignalSystem.Info Info; 
 
     private float spawnTime;
 
     public LayerMask CollisionLayerMask;
 
     public ParticleSystem ParticleSystem;
+	public Sender Sender;
 
     private static Collider[] colliderResult = new Collider[100];
     private static RaycastHit[] hitResult = new RaycastHit[100];
 
-    public void Init(SignalSystem.Info info) {
-        this.info = info;
+    public void Init(SignalSystem.Info info, Sender sender) {
+        this.Info = info;
         transform.position = info.Source;
         spawnTime = Time.time;
+
+        Sender = sender;
 
         var ems = ParticleSystem.emission;
         ems.rateOverTime = 0f;
@@ -52,16 +55,16 @@ public class Signal : MonoBehaviour
     }
 
     private void UpdateParticles() {
-        if (info == null) return;
+        if (Info == null) return;
 
-        ParticleSystem.GetParticles(info.Particles);
-        if (Time.time - spawnTime > info.Lifetime) {
+        ParticleSystem.GetParticles(Info.Particles);
+        if (Time.time - spawnTime > Info.Lifetime) {
             GameObject.Destroy(gameObject);
         } else {
-            for (int i = 0; i < info.Particles.Length; ++i) {
-                var p = info.Particles[i];
+            for (int i = 0; i < Info.Particles.Length; ++i) {
+                var p = Info.Particles[i];
 
-                if (Vector3.Distance(p.position, info.Source) < info.warmupDistance) {
+                if (Vector3.Distance(p.position, Info.Source) < Info.warmupDistance) {
                     // just skip
                     continue;
                 }
@@ -70,40 +73,40 @@ public class Signal : MonoBehaviour
 
                 if (stepDist >= 0f) {
                     UnityEngine.Profiling.Profiler.BeginSample("SphereCast");
-                    int count = Physics.SphereCastNonAlloc(p.position.SetY(0f), info.ParticleSize, p.velocity.normalized, hitResult, stepDist, CollisionLayerMask);
+                    int count = Physics.SphereCastNonAlloc(p.position.SetY(0f), Info.ParticleSize, p.velocity.normalized, hitResult, stepDist, CollisionLayerMask);
                     Debug.DrawLine(p.position.SetY(0f), p.position.SetY(0f)+p.velocity.normalized * stepDist, Color.magenta, 1f, false);
 
                     for (int j = 0; j < count; ++j) {
-                        ProcessCollider(hitResult[j].collider, info, p, i);
+                        ProcessCollider(hitResult[j].collider, Info, p, i);
                     }
                     UnityEngine.Profiling.Profiler.EndSample();
                 } else {
                     UnityEngine.Profiling.Profiler.BeginSample("OverlapSphere");
-                    int count = Physics.OverlapSphereNonAlloc(p.position.SetY(0f), info.ParticleSize, colliderResult, CollisionLayerMask);
+                    int count = Physics.OverlapSphereNonAlloc(p.position.SetY(0f), Info.ParticleSize, colliderResult, CollisionLayerMask);
 
 					for (int j = 0; j < count; ++j) {
-                        ProcessCollider(colliderResult[j], info, p, j);
+                        ProcessCollider(colliderResult[j], Info, p, j);
 					}
                     UnityEngine.Profiling.Profiler.EndSample();
                 }
             }
         }
 
-        ParticleSystem.SetParticles(info.Particles, info.Particles.Length);
+        ParticleSystem.SetParticles(Info.Particles, Info.Particles.Length);
     }
 
     private void FixedUpdate() {
         UpdateParticles();
     }
 
-    public string GetCommand() {return info.Command;}
-	public Sender GetPlayerSender() {return info.playerSender;}
-	public int GetPlayerOriginId() {return info.PlayerOriginId;}
-    public int GetSignalGroupId() {return info.SignalGroupId;}
-    public Vector3 GetCommandDirection() {return info.CommandDirection;}
+    public string GetCommand() {return Info.Command;}
+	public Sender GetPlayerSender() {return Info.playerSender;}
+	public int GetPlayerOriginId() {return Info.PlayerOriginId;}
+    public int GetSignalGroupId() {return Info.SignalGroupId;}
+    public Vector3 GetCommandDirection() {return Info.CommandDirection;}
 
     public float Strength() {
-        return Mathf.Clamp01(Time.time - spawnTime / info.Lifetime);
+        return Mathf.Clamp01(Time.time - spawnTime / Info.Lifetime);
     }
 
 }

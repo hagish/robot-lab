@@ -28,6 +28,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1733400110724038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4913136762411560}
+  - component: {fileID: 33692574615570112}
+  - component: {fileID: 23996964283593162}
+  m_Layer: 0
+  m_Name: CurrentCommand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &1886617961923638
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,10 +73,24 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4913136762411560}
   - {fileID: 4966756476932632}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4913136762411560
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1733400110724038}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029802318}
+  m_LocalPosition: {x: 0, y: 0.763, z: 0}
+  m_LocalScale: {x: 0.042383272, y: 0.042383272, z: 0.042383272}
+  m_Children: []
+  m_Father: {fileID: 4502606002047866}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
 --- !u!4 &4966756476932632
 Transform:
   m_ObjectHideFlags: 1
@@ -67,11 +98,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1581371214754680}
   m_LocalRotation: {x: -0.70710576, y: -0, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 2, y: 0, z: -5.7}
+  m_LocalPosition: {x: 1.9, y: 0, z: -5.7}
   m_LocalScale: {x: 26.60061, y: 26.60061, z: 26.60061}
   m_Children: []
   m_Father: {fileID: 4502606002047866}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 0}
 --- !u!23 &23973854351678012
 MeshRenderer:
@@ -107,6 +138,40 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!23 &23996964283593162
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1733400110724038}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: f47ea3b4d7d8f482db1e396fe4f1e1e8, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!33 &33465518521345944
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -114,6 +179,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1581371214754680}
   m_Mesh: {fileID: 4300016, guid: a902b95430868428d9e9a0681bf57fdd, type: 3}
+--- !u!33 &33692574615570112
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1733400110724038}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &54337983434084264
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -155,8 +227,13 @@ MonoBehaviour:
   FullCommandDuration: 1
   commandDuration: 1
   movementSpeed: 0.05
+  CommandRenderer: {fileID: 23996964283593162}
   IsToZeroOnDeath: 0
-  Renderer: {fileID: 0}
+  Renderer: {fileID: 23973854351678012}
   MaterialActive: {fileID: 2100000, guid: 278c68a7463d340eb8e3386c5510e14c, type: 2}
   MaterialInactive: {fileID: 2100000, guid: 4ecb019b401b7442c89344717897f0c7, type: 2}
-  MaxCommandQueueLength: 0
+  MaterialRight: {fileID: 2100000, guid: 2d4c9fb58d97441bda7d23cac6043b67, type: 2}
+  MaterialLeft: {fileID: 2100000, guid: 3c8205befb7dd4185a9f9651b77a87a3, type: 2}
+  MaterialUp: {fileID: 2100000, guid: d95f7272a38d045a38b49e19dcabaf3e, type: 2}
+  MaterialDown: {fileID: 2100000, guid: 2d5f4d444342e41198b67ddd718c4139, type: 2}
+  MaterialBlock: {fileID: 2100000, guid: f47ea3b4d7d8f482db1e396fe4f1e1e8, type: 2}

@@ -68,7 +68,7 @@ public class SignalSystem : MonoBehaviour {
         public float Radius;
     }
 
-    public void Spawn(Info info, float deltaAngle, Color color) {
+    public void Spawn(Info info, float deltaAngle, Color color, Sender sender) {
         var id = nextSignalId;
         nextSignalId += 1;
 
@@ -91,7 +91,7 @@ public class SignalSystem : MonoBehaviour {
 
         info.Particles = new ParticleSystem.Particle[maxI + 1];
 
-        signal.Init(info);
+        signal.Init(info, sender);
 
         for (int i = 0; i <= maxI; ++i) {
             var f = (float)i / (float)maxI;
