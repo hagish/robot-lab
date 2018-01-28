@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Agent : MonoBehaviour {
-
+    public GameObject Body;
 
     public ParticleSystem CuddleParticleSystem;
     public AudioSource CuddleSound;
 
     public float FullCommandDuration = 1.0f;
+
+    public float BodyRotateSpeed = 90;
 
     public float commandDuration = 1f;
     public float movementSpeed = 0.05f;
@@ -74,6 +76,10 @@ public class Agent : MonoBehaviour {
     private void Update() {
         if (Renderer != null) Renderer.sharedMaterial = IsCommandActive() ? MaterialInactive : MaterialActive;
         if (!IsCommandActive() && CommandRenderer != null) CommandRenderer.gameObject.SetActive(false);
+
+        if (dir.sqrMagnitude > 0.1f) {
+			Body.transform.rotation = Quaternion.RotateTowards(Body.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * BodyRotateSpeed);            
+        }
     }
 
     void FixedUpdate() {
