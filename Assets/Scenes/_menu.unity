@@ -550,7 +550,9 @@ MonoBehaviour:
 
     Press F1 to F3 for levels
 
-    ESCAPE to go back to the menu'
+    ESCAPE to go back to the menu
+
+    C to see the controls'
 --- !u!222 &1630698323
 CanvasRenderer:
   m_ObjectHideFlags: 0
