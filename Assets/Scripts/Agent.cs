@@ -39,6 +39,9 @@ public class Agent : MonoBehaviour {
     public Material MaterialBlock;
 	public AudioClip[] audioClips;
 
+    //catch the command
+    public string lastProcessedCommand = "";
+
     public struct CommandEntry {
         public string Command;
         public Vector3 Direction;
@@ -74,7 +77,18 @@ public class Agent : MonoBehaviour {
     }
 
     private void Update() {
-        if (Renderer != null) Renderer.sharedMaterial = IsCommandActive() ? MaterialInactive : MaterialActive;
+        if (Renderer != null)
+        {
+            bool isCommandActive = IsCommandActive();
+            Renderer.sharedMaterial = isCommandActive ? MaterialInactive : MaterialActive;
+            if(isCommandActive && lastProcessedCommand == "Block")
+            {
+                Renderer.sharedMaterial = MaterialBlock;
+            }
+        }
+           
+            
+
         if (!IsCommandActive() && CommandRenderer != null) CommandRenderer.gameObject.SetActive(false);
 
         if (dir.sqrMagnitude > 0.1f) {
@@ -130,6 +144,7 @@ public class Agent : MonoBehaviour {
                 CommandRenderer.gameObject.SetActive(false);
                 break;
         }
+        if (!string.IsNullOrEmpty(command)) lastProcessedCommand = command;
 
 		CommandRenderer.material.SetColor("_Color", color);
     }
