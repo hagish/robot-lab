@@ -56,9 +56,11 @@ public class AvatarController : MonoBehaviour
 
     }
 
-    void Update()
-    {
-        Movement();
+    void FixedUpdate() {
+		Movement();
+    }
+
+    private void Update() {
         SetRotation();
         CallTrigger(faceDirection);
 
@@ -72,6 +74,7 @@ public class AvatarController : MonoBehaviour
     {
         // Left stick movement
         Rigidbody controller = GetComponent<Rigidbody>();
+        controller.velocity = Vector3.zero;
         newPosition = transform.position;
         float axisX = InputManager.Get(XboxController).GetAxis(XboxAxis.LeftStickX);
         float axisY = InputManager.Get(XboxController).GetAxis(XboxAxis.LeftStickY);

@@ -41,7 +41,7 @@ public class Agent : MonoBehaviour {
 		
     internal void ExitReached(AgentExit agentExit) {
         if (IsToZeroOnDeath && LevelManager.Instance.CanSpawnMore()) {
-            transform.position = Vector3.zero;
+            GetComponent<Respawn>().DoRespawn();
             Reset();
         } else {
             GameObject.Destroy(gameObject);

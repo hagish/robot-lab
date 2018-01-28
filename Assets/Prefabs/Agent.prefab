@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 54337983434084264}
   - component: {fileID: 65216886712198896}
   - component: {fileID: 82204556071469148}
+  - component: {fileID: 114105616544129924}
   m_Layer: 10
   m_Name: Agent
   m_TagString: Agent
@@ -201,7 +202,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!65 &65216886712198896
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -320,3 +321,15 @@ MonoBehaviour:
   MaterialBlock: {fileID: 2100000, guid: f47ea3b4d7d8f482db1e396fe4f1e1e8, type: 2}
   audioClips:
   - {fileID: 8300000, guid: b71ba4f48dcd344a69d34094cad9ed13, type: 3}
+--- !u!114 &114105616544129924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886617961923638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b847186d7ace48ccb6417f088b12ea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartPosition: {x: 0, y: 0, z: 0}

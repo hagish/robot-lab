@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 54634350792742288}
   - component: {fileID: 65971832632730338}
   - component: {fileID: 82154981304006964}
+  - component: {fileID: 114338752662192932}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -753,7 +754,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!65 &65971832632730338
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -883,6 +884,18 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   _selectedCommand: Up
   CommandList: []
+--- !u!114 &114338752662192932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1229254395723426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b847186d7ace48ccb6417f088b12ea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &114391136198860212
 MonoBehaviour:
   m_ObjectHideFlags: 1
