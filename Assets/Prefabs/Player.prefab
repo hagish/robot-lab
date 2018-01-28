@@ -387,8 +387,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1229254395723426}
-  m_LocalRotation: {x: 0.17059149, y: -0.83623224, z: -0.1946438, w: 0.48345426}
-  m_LocalPosition: {x: 0.09, y: 0, z: 4.63}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.18, y: 0, z: 0.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4314127974529490}
@@ -912,6 +912,7 @@ MonoBehaviour:
   PlayerId: 1
   SendSignalAudioClip: {fileID: 8300000, guid: cc6ee074e3e054e1c8b8731798c17776, type: 3}
   NoPowerAudioClip: {fileID: 8300000, guid: 45300b4da741e4e549d9b12b67c7f320, type: 3}
+  PowerUpClip: {fileID: 8300000, guid: 239e78d388960436c94d1034b37f9447, type: 3}
   Timeout: 3
   Lifetime: 3
   MaxSpeed: 8
